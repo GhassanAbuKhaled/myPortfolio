@@ -1,0 +1,109 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Ghassan Abu Khaled",
+    "title": "Full Stack Developer",
+    "description": "I craft exceptional digital experiences through clean code, thoughtful design, and cutting-edge technologies. Let's build something amazing together.",
+    "viewWork": "View My Work",
+    "downloadResume": "Download Resume"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Passionate developer with a love for creating digital experiences",
+    "intro": "Hi, I'm Ghassan Abu Khaled - A Full Stack Developer",
+    "paragraph1": "I'm a passionate full-stack developer with over 3 years of experience building web applications. I specialize in React, Node.js, and modern web technologies to create seamless user experiences.",
+    "paragraph2": "When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying a good cup of coffee while planning my next project.",
+    "location": "Location:",
+    "locationValue": "Wuppertal 42107, Germany",
+    "experience": "Experience:",
+    "experienceValue": "3+ Years",
+    "availability": "Availability:",
+    "availabilityValue": "Open to opportunities",
+    "stats": {
+      "projects": "Projects Completed",
+      "coffee": "Cups of Coffee",
+      "years": "Years Experience"
+    }
+  },
+  "skills": {
+    "title": "Skills & Technologies",
+    "subtitle": "Technologies I work with to bring ideas to life",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "tools": "Tools & Others",
+    "techStack": "Tech Stack"
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "subtitle": "A showcase of my recent work and personal projects",
+    "myTitle": "My Projects",
+    "featuredWork": "Featured Work",
+    "viewCaseStudy": "View Case Study",
+    "viewAll": "View All Projects",
+    "allProjectsTitle": "All Projects",
+    "allProjectsDescription": "A complete collection of my work and personal projects"
+  },
+  "project": {
+    "ecommerce": {
+      "title": "E-Commerce Platform",
+      "description": "A full-stack e-commerce solution with React, Node.js, and Stripe integration.",
+      "longDescription": "Built a complete e-commerce platform featuring user authentication, payment processing, order management, and admin dashboard. Implemented responsive design and optimized for performance."
+    },
+    "taskManager": {
+      "title": "Task Management App",
+      "description": "A collaborative task management application with real-time updates.",
+      "longDescription": "Developed a real-time task management system with team collaboration features, drag-and-drop functionality, and progress tracking. Used Socket.io for real-time communication."
+    },
+    "weather": {
+      "title": "Weather Dashboard",
+      "description": "A beautiful weather app with forecasts and location-based updates.",
+      "longDescription": "Created a responsive weather dashboard that displays current conditions, 7-day forecasts, and interactive maps. Integrated with multiple weather APIs for accurate data."
+    },
+    "portfolio": {
+      "title": "Portfolio Website",
+      "description": "A responsive portfolio website built with modern web technologies.",
+      "longDescription": "Designed and developed a portfolio website showcasing projects and skills. Features smooth animations, dark mode, and optimized performance."
+    }
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Let's work together to bring your ideas to life",
+    "conversation": "Let's start a conversation",
+    "conversationText": "I'm always interested in new opportunities and exciting projects. Whether you have a question, want to collaborate, or just want to say hi, I'd love to hear from you.",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "availableFor": "Available for",
+    "fullTime": "Full-time opportunities",
+    "freelance": "Freelance projects",
+    "consulting": "Consulting & mentoring",
+    "openSource": "Open source collaboration",
+    "formTitle": "Send me a message",
+    "formDescription": "Fill out the form below and I'll get back to you as soon as possible.",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "your@email.com",
+    "subject": "Subject",
+    "subjectPlaceholder": "What's this about?",
+    "message": "Message",
+    "messagePlaceholder": "Tell me about your project...",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent!",
+    "successMessage": "Thank you for your message. I'll get back to you soon."
+  },
+  "footer": {
+    "description": "Full Stack Developer passionate about creating exceptional digital experiences.",
+    "quickLinks": "Quick Links",
+    "connect": "Connect",
+    "copyright": "© {year} Ghassan Abu Khaled",
+    "builtWith": "Built with React, TypeScript & Tailwind CSS"
+  }
+}
