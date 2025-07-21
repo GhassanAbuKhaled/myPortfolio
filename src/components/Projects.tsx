@@ -80,7 +80,7 @@ const Projects = () => {
       longDescriptionKey: "project.thesis.longDescription",
       image: "📊",
       technologies: ["C", "JavaScript", "Algorithms", "Graph Theory", "Data Structures"],
-      githubUrl: "#",
+      githubUrl: "https://github.com/GhassanAbuKhaled/GraphVisualisierung",
       liveUrl: "https://graph-akjt.onrender.com",
       featured: false
     },
@@ -102,7 +102,7 @@ const Projects = () => {
       longDescriptionKey: "project.personalProjects.longDescription",
       image: "🌟",
       technologies: ["HTML/CSS", "JavaScript", "React", "Responsive Design"],
-      githubUrl: "https://github.com/GhassanAbuKhaled/GraphVisualisierung",
+      githubUrl: "#",
       liveUrl: "#",
       featured: true
     },
