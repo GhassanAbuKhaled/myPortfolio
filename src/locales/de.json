@@ -61,6 +61,16 @@
       "description": "Eine kollaborative Aufgabenverwaltungsanwendung mit Echtzeit-Updates.",
       "longDescription": "Entwicklung eines Echtzeit-Aufgabenverwaltungssystems mit Teamkollaborationsfunktionen, Drag-and-Drop-Funktionalität und Fortschrittsverfolgung. Verwendung von Socket.io für Echtzeitkommunikation."
     },
+    "thesis": {
+      "title": "Distanzfärbung von dünn besetzten Graphen",
+      "description": "Bachelorarbeit über effiziente Implementierung von Algorithmen zur Distanzfärbung von dünn besetzten Graphen.",
+      "longDescription": "Bachelorarbeit an der Universität Wuppertal (11/2023) mit Fokus auf zwei Algorithmen: Greedy und DSatur, implementiert in C und JavaScript. Optimierung der Algorithmen-Effizienz durch geeignete Datenstrukturen, Erzielung guter Leistungsverbesserungen."
+    },
+    "lernplano": {
+      "title": "Lernplano Webanwendung",
+      "description": "Eine Open-Source-Webanwendung zur Erstellung und zum Export von Lernpfaden als PDFs.",
+      "longDescription": "Entwickelt während eines Praktikums an der Universität Wuppertal (ZIM), hilft diese Webanwendung Benutzern, Lernpfade zu erstellen und als PDFs zu exportieren. Aufgebaut und gewartet mit Vue.js."
+    },
     "weather": {
       "title": "Wetter-Dashboard",
       "description": "Eine schöne Wetter-App mit Prognosen und standortbasierten Updates.",
@@ -70,6 +80,11 @@
       "title": "Portfolio-Website",
       "description": "Eine responsive Portfolio-Website, die mit modernen Webtechnologien erstellt wurde.",
       "longDescription": "Design und Entwicklung einer Portfolio-Website zur Präsentation von Projekten und Fähigkeiten. Funktionen wie flüssige Animationen, Dark Mode und optimierte Leistung."
+    },
+    "personalProjects": {
+      "title": "Persönliche Portfolio-Projekte",
+      "description": "Eine Sammlung kleiner Webentwicklungsprojekte, die verschiedene Fähigkeiten demonstrieren.",
+      "longDescription": "Entwicklung mehrerer kleiner Projekte (08/2023), die meine Fähigkeiten in der Webentwicklung und Softwaretechnik demonstrieren, darunter: Breakfast Alley, Isabel Mercado, Maxwell und Lalissa. Jedes Projekt konzentriert sich auf verschiedene Aspekte der Webentwicklung."
     }
   },
   "contact": {

@@ -15,19 +15,19 @@ const ProjectCard = ({ project, t }) => (
         <div className="text-3xl">{project.image}</div>
         <div className="flex space-x-2 mt-2 sm:mt-0">
           <Button variant="ghost" size="icon" asChild>
-            <a href={project.githubUrl} aria-label="GitHub">
+            <a href={project.githubUrl} aria-label="GitHub" target="_blank" rel="noopener noreferrer">
               <Code2 className="h-4 w-4" />
             </a>
           </Button>
           <Button variant="ghost" size="icon" asChild>
-            <a href={project.liveUrl} aria-label="Live Demo">
+            <a href={project.liveUrl} aria-label="Live Demo" target="_blank" rel="noopener noreferrer">
               <ExternalLink className="h-4 w-4" />
             </a>
           </Button>
         </div>
       </div>
       <CardTitle>{t(project.titleKey)}</CardTitle>
-      <CardDescription>{t(project.descriptionKey)}</CardDescription>
+      <CardDescription>{t(project.longDescriptionKey)}</CardDescription>
     </CardHeader>
     <CardContent>
       <div className="flex flex-wrap gap-2">
@@ -75,25 +75,36 @@ const Projects = () => {
     },
     {
       id: 3,
-      titleKey: "project.weather.title",
-      descriptionKey: "project.weather.description",
-      longDescriptionKey: "project.weather.longDescription",
-      image: "🌤️",
-      technologies: ["React", "API Integration", "Chart.js", "CSS3"],
+      titleKey: "project.thesis.title",
+      descriptionKey: "project.thesis.description",
+      longDescriptionKey: "project.thesis.longDescription",
+      image: "📊",
+      technologies: ["C", "JavaScript", "Algorithms", "Graph Theory", "Data Structures"],
       githubUrl: "#",
-      liveUrl: "#",
+      liveUrl: "https://graph-akjt.onrender.com",
       featured: false
     },
     {
       id: 4,
-      titleKey: "project.portfolio.title",
-      descriptionKey: "project.portfolio.description",
-      longDescriptionKey: "project.portfolio.longDescription",
-      image: "💼",
-      technologies: ["React", "Framer Motion", "Tailwind CSS", "TypeScript"],
-      githubUrl: "#",
-      liveUrl: "#",
+      titleKey: "project.lernplano.title",
+      descriptionKey: "project.lernplano.description",
+      longDescriptionKey: "project.lernplano.longDescription",
+      image: "📚",
+      technologies: ["Vue.js", "JavaScript", "PDF Export", "Web Application"],
+      githubUrl: "https://github.com/GhassanAbuKhaled/LernPlano",
+      liveUrl: "https://lernplano.onrender.com",
       featured: false
+    },
+    {
+      id: 5,
+      titleKey: "project.personalProjects.title",
+      descriptionKey: "project.personalProjects.description",
+      longDescriptionKey: "project.personalProjects.longDescription",
+      image: "🌟",
+      technologies: ["HTML/CSS", "JavaScript", "React", "Responsive Design"],
+      githubUrl: "https://github.com/GhassanAbuKhaled/GraphVisualisierung",
+      liveUrl: "#",
+      featured: true
     },
   ]
 
@@ -199,12 +210,12 @@ const Projects = () => {
                       <span className="text-xl">{t(project.titleKey)}</span>
                       <div className="flex space-x-2">
                         <Button variant="ghost" size="icon" asChild>
-                          <a href={project.githubUrl} aria-label="GitHub">
+                          <a href={project.githubUrl} aria-label="GitHub" target="_blank" rel="noopener noreferrer">
                             <Code2 className="h-4 w-4" />
                           </a>
                         </Button>
                         <Button variant="ghost" size="icon" asChild>
-                          <a href={project.liveUrl} aria-label="Live Demo">
+                          <a href={project.liveUrl} aria-label="Live Demo" target="_blank" rel="noopener noreferrer">
                             <ExternalLink className="h-4 w-4" />
                           </a>
                         </Button>
