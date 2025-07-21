@@ -33,7 +33,7 @@ jobs:
         aws-region: us-east-1
     
     - name: Deploy to S3
-      run: aws s3 sync build/ s3://portfolioghassan --delete
+      run: aws s3 sync dist/ s3://portfolioghassan --delete
 
     - name: Invalidate CloudFront
       run: aws cloudfront create-invalidation --distribution-id E1RNQ5K3JFUJLH --paths "/*"
