@@ -61,6 +61,16 @@
       "description": "A collaborative task management application with real-time updates.",
       "longDescription": "Developed a real-time task management system with team collaboration features, drag-and-drop functionality, and progress tracking. Used Socket.io for real-time communication."
     },
+    "thesis": {
+      "title": "Distance Coloring of Sparse Graphs",
+      "description": "Bachelor thesis on efficient implementation of algorithms for distance coloring of sparse graphs.",
+      "longDescription": "Bachelor thesis at University of Wuppertal (11/2023) focusing on two algorithms: Greedy and DSatur, implemented in C and JavaScript. Optimized algorithm efficiency through appropriate data structures, achieving significant performance improvements."
+    },
+    "lernplano": {
+      "title": "Lernplano Web Application",
+      "description": "An open-source web application for creating and exporting learning paths as PDFs.",
+      "longDescription": "Developed during an internship at University of Wuppertal (ZIM), this web application helps users create and export learning paths as PDFs. Built and maintained using Vue.js."
+    },
     "weather": {
       "title": "Weather Dashboard",
       "description": "A beautiful weather app with forecasts and location-based updates.",
@@ -70,6 +80,11 @@
       "title": "Portfolio Website",
       "description": "A responsive portfolio website built with modern web technologies.",
       "longDescription": "Designed and developed a portfolio website showcasing projects and skills. Features smooth animations, dark mode, and optimized performance."
+    },
+    "personalProjects": {
+      "title": "Personal Portfolio Projects",
+      "description": "A collection of small web development projects showcasing various skills.",
+      "longDescription": "Developed several small projects (08/2023) demonstrating web development and software engineering skills, including: Breakfast Alley, Isabel Mercado, Maxwell, and Lalissa. Each project focuses on different aspects of web development."
     }
   },
   "contact": {
