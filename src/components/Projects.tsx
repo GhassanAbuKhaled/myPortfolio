@@ -12,7 +12,13 @@ const ProjectCard = ({ project, t }) => (
   <Card className="h-full border-border hover:border-primary/50 transition-all duration-300">
     <CardHeader>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-        <div className="text-3xl">{project.image}</div>
+        {project.imageType === "file" ? (
+          <div className="w-12 h-12 flex items-center justify-center overflow-hidden rounded-md">
+            <img src={project.image} alt={t(project.titleKey)} className="w-full h-full object-cover" />
+          </div>
+        ) : (
+          <div className="text-3xl">{project.image}</div>
+        )}
         <div className="flex space-x-2 mt-2 sm:mt-0">
           <Button variant="ghost" size="icon" asChild>
             <a href={project.githubUrl} aria-label="GitHub" target="_blank" rel="noopener noreferrer">
@@ -67,7 +73,8 @@ const Projects = () => {
       titleKey: "project.taskManager.title",
       descriptionKey: "project.taskManager.description",
       longDescriptionKey: "project.taskManager.longDescription",
-      image: "📋",
+      image: "/task-welcome.png",
+      imageType: "file",
       technologies: ["React", "TypeScript", "Socket.io", "Express", "PostgreSQL"],
       githubUrl: "https://github.com/GhassanAbuKhaled/TaskFlow",
       liveUrl: "https://taskflow.ghassanabukhaled.com/",
@@ -202,8 +209,18 @@ const Projects = () => {
                 className="group w-full lg:w-auto mx-auto lg:mx-0 max-w-md lg:max-w-none"
               >
                 <Card className="overflow-hidden border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow flex flex-col">
-                  <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                    <div className="text-6xl">{project.image}</div>
+                  <div className="aspect-video overflow-hidden">
+                    {project.imageType === "file" ? (
+                      <img 
+                        src={project.image} 
+                        alt={t(project.titleKey)} 
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+                        <div className="text-6xl">{project.image}</div>
+                      </div>
+                    )}
                   </div>
                   <CardHeader>
                     <CardTitle className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
