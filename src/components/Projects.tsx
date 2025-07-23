@@ -69,8 +69,8 @@ const Projects = () => {
       longDescriptionKey: "project.taskManager.longDescription",
       image: "📋",
       technologies: ["React", "TypeScript", "Socket.io", "Express", "PostgreSQL"],
-      githubUrl: "#",
-      liveUrl: "#",
+      githubUrl: "https://github.com/GhassanAbuKhaled/TaskFlow",
+      liveUrl: "https://taskflow.ghassanabukhaled.com/",
       featured: true
     },
     {
