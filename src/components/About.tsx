@@ -1,7 +1,40 @@
 import { motion, useInView } from 'framer-motion'
-import { useRef, useMemo } from 'react'
+import { useRef, useMemo, memo, FC, useCallback } from 'react'
 import { Code, Coffee, Zap } from 'lucide-react'
 import { useLanguage } from './LanguageProvider'
+
+interface StatItemProps {
+  icon: FC<{ className?: string }>
+  value: string
+  label: string
+}
+
+const StatItem: FC<StatItemProps> = memo(({ icon: Icon, value, label }) => (
+  <motion.div
+    variants={{
+      hidden: { y: 50, opacity: 0 },
+      visible: { y: 0, opacity: 1 }
+    }}
+    className="text-center p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors w-[calc(50%-1rem)] md:w-[220px]"
+  >
+    <Icon className="h-8 w-8 text-primary mx-auto mb-4" />
+    <div className="text-3xl font-bold text-foreground mb-2">{value}</div>
+    <div className="text-sm text-muted-foreground">{label}</div>
+  </motion.div>
+));
+
+interface InfoItemProps {
+  label: string
+  value: string
+  className: string
+}
+
+const InfoItem: FC<InfoItemProps> = memo(({ label, value, className }) => (
+  <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+    <span className="font-medium">{label}</span>
+    <span className={className}>{value}</span>
+  </div>
+));
 
 const About = () => {
   const ref = useRef(null)
@@ -62,6 +95,8 @@ const About = () => {
                   alt={t('hero.name')} 
                   className="w-full h-full object-cover"
                   loading="lazy"
+                  width="400"
+                  height="400"
                 />
               </div>
             </motion.div>
@@ -78,10 +113,12 @@ const About = () => {
               </p>
               <div className="space-y-4">
                 {infoItems.map(({ key, valueKey, className }) => (
-                  <div key={key} className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
-                    <span className="font-medium">{t(`about.${key}`)}</span>
-                    <span className={className}>{t(`about.${valueKey}`)}</span>
-                  </div>
+                  <InfoItem
+                    key={key}
+                    label={t(`about.${key}`)}
+                    value={t(`about.${valueKey}`)}
+                    className={className}
+                  />
                 ))}
               </div>
             </motion.div>
@@ -89,16 +126,8 @@ const About = () => {
 
           {/* Stats */}
           <motion.div variants={animations.item} className="flex flex-wrap justify-center gap-8">
-            {stats.map(({ icon: Icon, value, label }) => (
-              <motion.div
-                key={label}
-                variants={animations.item}
-                className="text-center p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors w-[calc(50%-1rem)] md:w-[220px]"
-              >
-                <Icon className="h-8 w-8 text-primary mx-auto mb-4" />
-                <div className="text-3xl font-bold text-foreground mb-2">{value}</div>
-                <div className="text-sm text-muted-foreground">{label}</div>
-              </motion.div>
+            {stats.map(({ icon, value, label }) => (
+              <StatItem key={label} icon={icon} value={value} label={label} />
             ))}
           </motion.div>
         </motion.div>
