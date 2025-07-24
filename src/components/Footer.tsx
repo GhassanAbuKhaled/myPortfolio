@@ -27,7 +27,7 @@ const Footer = () => {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             {/* Brand */}
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold">{t('hero.name')}</h3>
+              <h3 className="text-2xl font-bold">Ghassan Abu Khaled</h3>
               <p className="text-muted-foreground">
                 {t('footer.description')}
               </p>
