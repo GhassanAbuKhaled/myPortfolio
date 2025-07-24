@@ -115,7 +115,7 @@ const Hero = () => {
             variants={variants.item}
             className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent"
           >
-            {t('hero.name')}
+            Ghassan Abu Khaled
           </motion.h1>
 
           <motion.div variants={variants.item} className="mb-6">
