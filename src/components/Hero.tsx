@@ -1,19 +1,72 @@
 import { motion } from 'framer-motion'
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, memo, FC, useCallback } from 'react'
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from './LanguageProvider'
+
+interface SocialLinkProps {
+  icon: FC<{ className?: string }>
+  href: string
+  label: string
+  newTab?: boolean
+}
+
+const SocialLink: FC<SocialLinkProps> = memo(({ icon: Icon, href, label, newTab }) => (
+  <motion.a
+    href={href}
+    target={newTab && !href.startsWith('mailto:') ? "_blank" : undefined}
+    rel={newTab && !href.startsWith('mailto:') ? "noopener noreferrer" : undefined}
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.95 }}
+    className="p-3 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+    aria-label={label}
+  >
+    <Icon className="h-6 w-6" />
+  </motion.a>
+));
+
+interface BackgroundParticleProps {
+  index: number
+}
+
+const BackgroundParticle: FC<BackgroundParticleProps> = memo(({ index }) => {
+  const random = useMemo(() => ({
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    duration: Math.random() * 10 + 20
+  }), []);
+
+  return (
+    <motion.div
+      className="absolute w-2 h-2 bg-primary/20 rounded-full"
+      initial={{ x: `${random.x}vw`, y: `${random.y}vh` }}
+      animate={{ 
+        x: [`${random.x}vw`, `${(random.x + 50) % 100}vw`],
+        y: [`${random.y}vh`, `${(random.y + 50) % 100}vh`]
+      }}
+      transition={{
+        duration: random.duration,
+        repeat: Infinity,
+        repeatType: "reverse",
+        ease: "linear"
+      }}
+    />
+  );
+});
 
 const Hero = () => {
   const { t } = useLanguage()
   const [isSmallHeight, setIsSmallHeight] = useState(false)
   
+  const checkHeight = useCallback(() => {
+    setIsSmallHeight(window.innerHeight <= 701)
+  }, [])
+
   useEffect(() => {
-    const checkHeight = () => setIsSmallHeight(window.innerHeight <= 701)
     checkHeight()
     window.addEventListener('resize', checkHeight)
     return () => window.removeEventListener('resize', checkHeight)
-  }, [])
+  }, [checkHeight])
   
   const variants = useMemo(() => ({
     container: {
@@ -42,31 +95,9 @@ const Hero = () => {
       
       {/* Animated background particles */}
       <div className="absolute inset-0">
-        {Array.from({ length: 12 }).map((_, i) => {
-          const random = {
-            x: Math.random() * 100,
-            y: Math.random() * 100,
-            duration: Math.random() * 10 + 20
-          }
-          
-          return (
-            <motion.div
-              key={i}
-              className="absolute w-2 h-2 bg-primary/20 rounded-full"
-              initial={{ x: `${random.x}vw`, y: `${random.y}vh` }}
-              animate={{ 
-                x: [`${random.x}vw`, `${(random.x + 50) % 100}vw`],
-                y: [`${random.y}vh`, `${(random.y + 50) % 100}vh`]
-              }}
-              transition={{
-                duration: random.duration,
-                repeat: Infinity,
-                repeatType: "reverse",
-                ease: "linear"
-              }}
-            />
-          )
-        })}
+        {Array.from({ length: 12 }).map((_, i) => (
+          <BackgroundParticle key={i} index={i} />
+        ))}
       </div>
 
       <div className="container mx-auto px-4 z-10 mt-4 sm:mt-0">
@@ -121,19 +152,8 @@ const Hero = () => {
           </motion.div>
 
           <motion.div variants={variants.item} className="flex justify-center space-x-4 sm:space-x-6">
-            {socialLinks.map(({ icon: Icon, href, label, newTab }) => (
-              <motion.a
-                key={label}
-                href={href}
-                target={newTab && !href.startsWith('mailto:') ? "_blank" : undefined}
-                rel={newTab && !href.startsWith('mailto:') ? "noopener noreferrer" : undefined}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-3 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-                aria-label={label}
-              >
-                <Icon className="h-6 w-6" />
-              </motion.a>
+            {socialLinks.map((link) => (
+              <SocialLink key={link.label} {...link} />
             ))}
           </motion.div>
         </motion.div>
