@@ -2,6 +2,7 @@ import { motion, useInView } from 'framer-motion'
 import { useRef, useMemo, memo, FC, useCallback } from 'react'
 import { Code, Coffee, Zap } from 'lucide-react'
 import { useLanguage } from './LanguageProvider'
+import { ImageWithLoading } from './ui/image-with-loading'
 
 interface StatItemProps {
   icon: FC<{ className?: string }>
@@ -90,13 +91,11 @@ const About = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
             <motion.div variants={animations.item}>
               <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl overflow-hidden">
-                <img 
+                <ImageWithLoading 
                   src="/images/profile/me.jpg" 
-                  alt={t('hero.name')} 
+                  alt="Ghassan Abu Khaled" 
                   className="w-full h-full object-cover"
-                  loading="lazy"
-                  width="400"
-                  height="400"
+                  loadingSize="lg"
                 />
               </div>
             </motion.div>
