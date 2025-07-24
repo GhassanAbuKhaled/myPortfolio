@@ -4,6 +4,7 @@
     "about": "Über mich",
     "projects": "Projekte",
     "skills": "Fähigkeiten",
+    "certifications": "Zertifizierungen",
     "contact": "Kontakt"
   },
   "hero": {
@@ -71,6 +72,35 @@
       "title": "Portfolio-Website",
       "description": "Eine responsive Portfolio-Website, die mit modernen Webtechnologien erstellt wurde.",
       "longDescription": "Design und Entwicklung einer Portfolio-Website zur Präsentation von Projekten und Fähigkeiten. Funktionen wie flüssige Animationen, Dark Mode und optimierte Leistung."
+    }
+  },
+  "certifications": {
+    "title": "Zertifizierungen",
+    "subtitle": "Kontinuierliches Lernen und berufliche Weiterentwicklung",
+    "viewCertificate": "Zertifikat ansehen",
+    "metaFrontend": {
+      "title": "Meta Front-End Developer",
+      "issuer": "Coursera – Meta",
+      "date": "Juni 2024",
+      "description": "Umfassendes Programm zu React, JavaScript, HTML/CSS und modernen Front-End-Entwicklungspraktiken. Expertise im Aufbau responsiver Webanwendungen und Benutzeroberflächen erworben."
+    },
+    "googleIT": {
+      "title": "Google IT Support",
+      "issuer": "Coursera – Google",
+      "date": "März 2023",
+      "description": "Grundlegende IT-Support-Fähigkeiten einschließlich Fehlerbehebung, Kundenservice, Netzwerke, Betriebssysteme, Systemadministration und Sicherheitsgrundlagen."
+    },
+    "pythonEverybody": {
+      "title": "Python for Everybody",
+      "issuer": "University of Michigan (Coursera)",
+      "date": "Januar 2023",
+      "description": "Vollständige Python-Programmier-Spezialisierung zu Datenstrukturen, Web-Scraping, Datenbanken und Datenvisualisierung. Starke Grundlage in Python-Programmierung aufgebaut."
+    },
+    "amazonJuniorDev": {
+      "title": "Amazon Junior Software Developer Specialization",
+      "issuer": "Coursera – Amazon",
+      "date": "Mai 2025",
+      "description": "Umfassende 7-Kurs-Spezialisierung zu Softwareentwicklungsgrundlagen, Java-Programmierung, Datenstrukturen, Algorithmen, Datenbankmanagement, Full-Stack-Entwicklung und generativen KI-Anwendungen."
     }
   },
   "contact": {
