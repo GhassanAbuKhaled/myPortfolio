@@ -1,10 +1,8 @@
 import { motion, useInView } from 'framer-motion'
-import { useRef, useState, useMemo } from 'react'
+import { useRef, useMemo } from 'react'
 import { ExternalLink, Code2, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog'
-import { scrollbarClasses } from '@/lib/scrollbar-utils'
 import { useLanguage } from '@/components/LanguageProvider'
 import { SectionDivider } from '@/components/ui/section-divider'
 
@@ -53,7 +51,6 @@ const ProjectCard = ({ project, t }) => (
 const Projects = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
-  const [showAllProjects, setShowAllProjects] = useState(false)
   const { t } = useLanguage()
 
   const projects = [
@@ -163,32 +160,8 @@ const Projects = () => {
             </div>
           </motion.div>
 
-          {/* View All Projects Button */}
-          <motion.div variants={itemVariants} className="text-center mt-12">
-            <Button variant="glow" size="lg" onClick={() => setShowAllProjects(true)}>
-              {t('projects.viewAll')}
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </motion.div>
-
-          {/* All Projects Dialog */}
-          <Dialog open={showAllProjects} onOpenChange={setShowAllProjects}>
-            <DialogContent className={`max-w-4xl max-h-[80vh] overflow-y-auto ${scrollbarClasses}`}>
-              <DialogHeader>
-                <DialogTitle className="text-2xl font-bold">{t('projects.allProjectsTitle')}</DialogTitle>
-                <DialogDescription>
-                  {t('projects.allProjectsDescription')}
-                </DialogDescription>
-              </DialogHeader>
-              <div className="grid sm:grid-cols-2 gap-6 mt-6">
-                {projects.map((project) => (
-                  <div key={project.id}>
-                    <ProjectCard project={project} t={t} />
-                  </div>
-                ))}
-              </div>
-            </DialogContent>
-          </Dialog>
+          {/* Space between sections */}
+          <div className="mt-12"></div>
 
           {/* Section Divider */}
           <SectionDivider label={t('projects.featuredWork')} />
