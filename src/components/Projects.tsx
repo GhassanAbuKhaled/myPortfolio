@@ -181,9 +181,11 @@ const Projects = () => {
                         </span>
                       ))}
                     </div>
-                    <Button variant="outline" className="w-full group">
-                      {t('projects.viewCaseStudy')}
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    <Button variant="outline" className="w-full group" asChild>
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                        {t('projects.viewProject')}
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </a>
                     </Button>
                   </CardContent>
                 </Card>
