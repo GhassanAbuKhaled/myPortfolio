@@ -48,11 +48,6 @@
     "viewCaseStudy": "Fallstudie ansehen"
   },
   "project": {
-    "ecommerce": {
-      "title": "E-Commerce Plattform",
-      "description": "Eine Full-Stack-E-Commerce-Lösung mit React, Node.js und Stripe-Integration.",
-      "longDescription": "Entwicklung einer kompletten E-Commerce-Plattform mit Benutzerauthentifizierung, Zahlungsabwicklung, Bestellverwaltung und Admin-Dashboard. Implementierung eines responsiven Designs und Optimierung für Leistung."
-    },
     "taskManager": {
       "title": "Aufgabenverwaltungs-App",
       "description": "Eine kollaborative Aufgabenverwaltungsanwendung mit Echtzeit-Updates.",
@@ -77,11 +72,6 @@
       "title": "Portfolio-Website",
       "description": "Eine responsive Portfolio-Website, die mit modernen Webtechnologien erstellt wurde.",
       "longDescription": "Design und Entwicklung einer Portfolio-Website zur Präsentation von Projekten und Fähigkeiten. Funktionen wie flüssige Animationen, Dark Mode und optimierte Leistung."
-    },
-    "personalProjects": {
-      "title": "Persönliche Portfolio-Projekte",
-      "description": "Eine Sammlung kleiner Webentwicklungsprojekte, die verschiedene Fähigkeiten demonstrieren.",
-      "longDescription": "Entwicklung mehrerer kleiner Projekte (08/2023), die meine Fähigkeiten in der Webentwicklung und Softwaretechnik demonstrieren, darunter: Breakfast Alley, Isabel Mercado, Maxwell und Lalissa. Jedes Projekt konzentriert sich auf verschiedene Aspekte der Webentwicklung."
     }
   },
   "contact": {

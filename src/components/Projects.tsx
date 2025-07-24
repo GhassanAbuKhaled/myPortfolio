@@ -55,18 +55,6 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      titleKey: "project.ecommerce.title",
-      descriptionKey: "project.ecommerce.description",
-      longDescriptionKey: "project.ecommerce.longDescription",
-      image: "/images/projects/welcome.png",
-      imageType: "file",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe", "Tailwind CSS"],
-      githubUrl: "#",
-      liveUrl: "#",
-      featured: true
-    },
-    {
-      id: 2,
       titleKey: "project.taskManager.title",
       descriptionKey: "project.taskManager.description",
       longDescriptionKey: "project.taskManager.longDescription",
@@ -78,7 +66,7 @@ const Projects = () => {
       featured: true
     },
     {
-      id: 3,
+      id: 2,
       titleKey: "project.thesis.title",
       descriptionKey: "project.thesis.description",
       longDescriptionKey: "project.thesis.longDescription",
@@ -90,7 +78,7 @@ const Projects = () => {
       featured: true
     },
     {
-      id: 4,
+      id: 3,
       titleKey: "project.lernplano.title",
       descriptionKey: "project.lernplano.description",
       longDescriptionKey: "project.lernplano.longDescription",
@@ -99,18 +87,6 @@ const Projects = () => {
       technologies: ["Vue.js", "JavaScript", "PDF Export", "Web Application"],
       githubUrl: "https://github.com/GhassanAbuKhaled/LernPlano",
       liveUrl: "https://lernplano.onrender.com",
-      featured: true
-    },
-    {
-      id: 5,
-      titleKey: "project.personalProjects.title",
-      descriptionKey: "project.personalProjects.description",
-      longDescriptionKey: "project.personalProjects.longDescription",
-      image: "/images/projects/taskflow/welcome.png",
-      imageType: "file",
-      technologies: ["HTML/CSS", "JavaScript", "React", "Responsive Design"],
-      githubUrl: "#",
-      liveUrl: "#",
       featured: true
     },
   ]
@@ -148,7 +124,7 @@ const Projects = () => {
 
           {/* Projects Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">{t('projects.title')}</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">{t('projects.myTitle')}</h2>
             <p className="text-xl text-muted-foreground">
               {t('projects.subtitle')}
             </p>
