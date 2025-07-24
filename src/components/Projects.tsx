@@ -73,7 +73,7 @@ const Projects = () => {
       titleKey: "project.taskManager.title",
       descriptionKey: "project.taskManager.description",
       longDescriptionKey: "project.taskManager.longDescription",
-      image: "/task-welcome.png",
+      image: "/images/projects/taskflow/welcome.png",
       imageType: "file",
       technologies: ["React", "TypeScript", "Socket.io", "Express", "PostgreSQL"],
       githubUrl: "https://github.com/GhassanAbuKhaled/TaskFlow",
