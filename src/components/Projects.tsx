@@ -109,7 +109,7 @@ const Projects = () => {
       longDescriptionKey: "project.taskManager.longDescription",
       image: "/images/projects/taskapp-welcome.png",
       imageType: "file",
-      technologies: ["React", "TypeScript", "Socket.io", "Express", "PostgreSQL"],
+      technologies: ["React", "TypeScript", "Framer Motion", "Tailwind"],
       githubUrl: "https://github.com/GhassanAbuKhaled/TaskFlow",
       liveUrl: "https://taskflow.ghassanabukhaled.com/",
       date: "07/2025 - Present",

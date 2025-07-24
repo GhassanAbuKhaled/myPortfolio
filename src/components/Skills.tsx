@@ -12,8 +12,8 @@ const TechStackItem: FC<TechStackItemProps> = memo(({ tech, index, isInView }) =
   <motion.div
     initial={{ scale: 0, opacity: 0 }}
     animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-    transition={{ 
-      delay: index * 0.1, 
+    transition={{
+      delay: index * 0.1,
       duration: 0.3,
       type: "tween"
     }}
@@ -46,9 +46,9 @@ const SkillCategory: FC<SkillCategoryProps> = memo(({ category, categoryIndex, i
     <h3 className="text-2xl font-semibold mb-6 text-center">{category.title}</h3>
     <div className="space-y-4">
       {category.skills.map((skill, skillIndex) => (
-        <SkillBar 
-          key={skill.name} 
-          skill={skill} 
+        <SkillBar
+          key={skill.name}
+          skill={skill}
           delay={categoryIndex * 0.2 + skillIndex * 0.1}
           isInView={isInView}
         />
@@ -107,9 +107,10 @@ const Skills = () => {
     {
       title: t('skills.frontend'),
       skills: [
-        { name: "React", level: 90, color: "from-blue-500 to-cyan-500" },
+        { name: "React", level: 85, color: "from-blue-500 to-cyan-500" },
+        { name: "Vue", level: 80, color: "from-blue-500 to-cyan-500" },
+        { name: "Angular", level: 70, color: "from-gray-800 to-gray-600" },
         { name: "TypeScript", level: 85, color: "from-blue-600 to-blue-400" },
-        { name: "Next.js", level: 80, color: "from-gray-800 to-gray-600" },
         { name: "Tailwind CSS", level: 95, color: "from-cyan-500 to-blue-500" },
         { name: "Framer Motion", level: 75, color: "from-purple-500 to-pink-500" }
       ]
@@ -120,7 +121,9 @@ const Skills = () => {
         { name: "Node.js", level: 85, color: "from-green-600 to-green-400" },
         { name: "Express", level: 80, color: "from-gray-600 to-gray-400" },
         { name: "MongoDB", level: 75, color: "from-green-500 to-emerald-500" },
-        { name: "PostgreSQL", level: 70, color: "from-blue-600 to-indigo-600" },
+        { name: "MySQL", level: 70, color: "from-blue-600 to-indigo-600" },
+        { name: "Java", level: 80, color: "from-orange-500 to-red-500" },
+        { name: "Spring Boot", level: 75, color: "from-green-700 to-lime-500" },
         { name: "REST APIs", level: 90, color: "from-orange-500 to-red-500" }
       ]
     },
@@ -136,11 +139,9 @@ const Skills = () => {
     }
   ], [t])
 
-  const techStack = useMemo(() => 
-    ['React', 'TypeScript', 'Node.js', 'MongoDB', 'PostgreSQL', 'AWS', 'Docker', 'Git'], 
-  [])
-
-
+  // const techStack = useMemo(() => 
+  //   ['React', 'TypeScript', 'Node.js', 'MongoDB', 'PostgreSQL', 'AWS', 'Docker', 'Git'], 
+  // []);
 
   return (
     <section id="skills" className="py-20">
@@ -172,7 +173,7 @@ const Skills = () => {
           </div>
 
           {/* Interactive Tech Stack */}
-          <motion.div variants={animations.item} className="mt-16">
+          {/* <motion.div variants={animations.item} className="mt-16">
             <h3 className="text-2xl font-semibold text-center mb-8">{t('skills.techStack')}</h3>
             <div className="flex flex-wrap justify-center gap-4">
               {techStack.map((tech, index) => (
@@ -184,7 +185,7 @@ const Skills = () => {
                 />
               ))}
             </div>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </div>
     </section>
