@@ -60,9 +60,8 @@ const About = () => {
   }), [])
 
   const stats = useMemo(() => [
-    { icon: Code, value: "5+", label: t('about.stats.projects') },
     { icon: Coffee, value: "1000+", label: t('about.stats.coffee') },
-    { icon: Zap, value: "3+", label: t('about.stats.years') },
+    { icon: Zap, value: "2+", label: t('about.stats.years') },
   ], [t])
 
   const infoItems = useMemo(() => [
