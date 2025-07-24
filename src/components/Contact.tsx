@@ -1,5 +1,5 @@
 import { motion, useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useRef, useState, useMemo, memo, FC, useCallback } from 'react'
 import { Mail, MapPin, Phone, Send } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -8,6 +8,58 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useToast } from '@/hooks/use-toast'
 import { useLanguage } from './LanguageProvider'
 
+interface ContactInfoItemProps {
+  icon: FC<{ className?: string }>
+  label: string
+  value: string
+  href: string
+  t: (key: string) => string
+}
+
+const ContactInfoItem: FC<ContactInfoItemProps> = memo(({ icon: Icon, label, value, href, t }) => (
+  <motion.a
+    href={href}
+    target={label === t('contact.location') ? "_blank" : undefined}
+    rel={label === t('contact.location') ? "noopener noreferrer" : undefined}
+    whileHover={{ x: 5 }}
+    className="flex items-center space-x-4 p-4 rounded-lg bg-card border border-border hover:border-primary/50 transition-all duration-300 group"
+  >
+    <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+      <Icon className="h-5 w-5" />
+    </div>
+    <div>
+      <div className="font-medium">{label}</div>
+      <div className="text-muted-foreground text-sm sm:text-base break-all">{value}</div>
+    </div>
+  </motion.a>
+));
+
+interface FormFieldProps {
+  field: {
+    id: string
+    type: string
+    label: string
+    placeholder: string
+  }
+  t: (key: string) => string
+}
+
+const FormField: FC<FormFieldProps> = memo(({ field, t }) => (
+  <div className="space-y-2">
+    <label htmlFor={field.id} className="text-sm font-medium">
+      {t(field.label)}
+    </label>
+    <Input
+      id={field.id}
+      name={field.id}
+      type={field.type}
+      required
+      placeholder={t(field.placeholder)}
+      className="focus:ring-2 focus:ring-primary/20"
+    />
+  </div>
+));
+
 const Contact = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
@@ -15,7 +67,7 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { t } = useLanguage()
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = useCallback(async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
     
@@ -43,9 +95,9 @@ const Contact = () => {
     } finally {
       setIsSubmitting(false)
     }
-  }
+  }, [toast, t])
 
-  const contactInfo = [
+  const contactInfo = useMemo(() => [
     {
       icon: Mail,
       label: t('contact.email'),
@@ -64,9 +116,18 @@ const Contact = () => {
       value: t('about.locationValue'),
       href: "https://www.google.com/maps/search/?api=1&query=Wuppertal+42107+Germany"
     }
-  ]
+  ], [t])
 
-  const containerVariants = {
+  const formFields = useMemo(() => [
+    { id: 'name', type: 'text', label: 'contact.name', placeholder: 'contact.namePlaceholder' },
+    { id: 'email', type: 'email', label: 'contact.email', placeholder: 'contact.emailPlaceholder' }
+  ], [])
+
+  const availabilityItems = useMemo(() => 
+    ['fullTime', 'freelance', 'consulting', 'openSource'], []
+  )
+
+  const containerVariants = useMemo(() => ({
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -75,12 +136,12 @@ const Contact = () => {
         staggerChildren: 0.2
       }
     }
-  }
+  }), [])
 
-  const itemVariants = {
+  const itemVariants = useMemo(() => ({
     hidden: { y: 50, opacity: 0 },
     visible: { y: 0, opacity: 1 }
-  }
+  }), [])
 
   return (
     <section id="contact" className="py-20">
@@ -110,30 +171,15 @@ const Contact = () => {
               </div>
 
               <div className="space-y-4">
-                {contactInfo.map(({ icon: Icon, label, value, href }) => (
-                  <motion.a
-                    key={label}
-                    href={href}
-                    target={label === t('contact.location') ? "_blank" : undefined}
-                    rel={label === t('contact.location') ? "noopener noreferrer" : undefined}
-                    whileHover={{ x: 5 }}
-                    className="flex items-center space-x-4 p-4 rounded-lg bg-card border border-border hover:border-primary/50 transition-all duration-300 group"
-                  >
-                    <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <div className="font-medium">{label}</div>
-                      <div className="text-muted-foreground text-sm sm:text-base break-all">{value}</div>
-                    </div>
-                  </motion.a>
+                {contactInfo.map((info) => (
+                  <ContactInfoItem key={info.label} {...info} t={t} />
                 ))}
               </div>
 
               <div className="p-6 rounded-lg bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20">
                 <h4 className="font-semibold mb-2">{t('contact.availableFor')}</h4>
                 <ul className="text-muted-foreground space-y-1">
-                  {['fullTime', 'freelance', 'consulting', 'openSource'].map((item) => (
+                  {availabilityItems.map((item) => (
                     <li key={item}>• {t(`contact.${item}`)}</li>
                   ))}
                 </ul>
@@ -152,23 +198,8 @@ const Contact = () => {
                 <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-4">
-                      {[
-                        { id: 'name', type: 'text', label: 'contact.name', placeholder: 'contact.namePlaceholder' },
-                        { id: 'email', type: 'email', label: 'contact.email', placeholder: 'contact.emailPlaceholder' }
-                      ].map((field) => (
-                        <div key={field.id} className="space-y-2">
-                          <label htmlFor={field.id} className="text-sm font-medium">
-                            {t(field.label)}
-                        </label>
-                        <Input
-                            id={field.id}
-                            name={field.id}
-                            type={field.type}
-                          required
-                            placeholder={t(field.placeholder)}
-                            className="focus:ring-2 focus:ring-primary/20"
-                        />
-                      </div>
+                      {formFields.map((field) => (
+                        <FormField key={field.id} field={field} t={t} />
                       ))}
                     </div>
                     <div className="space-y-2">
