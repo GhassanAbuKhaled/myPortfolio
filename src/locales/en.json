@@ -4,6 +4,7 @@
     "about": "About",
     "projects": "Projects",
     "skills": "Skills",
+    "certifications": "Certifications",
     "contact": "Contact"
   },
   "hero": {
@@ -71,6 +72,35 @@
       "title": "Portfolio Website",
       "description": "A responsive portfolio website built with modern web technologies.",
       "longDescription": "Designed and developed a portfolio website showcasing projects and skills. Features smooth animations, dark mode, and optimized performance."
+    }
+  },
+  "certifications": {
+    "title": "Certifications",
+    "subtitle": "Continuous learning and professional development",
+    "viewCertificate": "View Certificate",
+    "metaFrontend": {
+      "title": "Meta Front-End Developer",
+      "issuer": "Coursera – Meta",
+      "date": "June 2024",
+      "description": "Comprehensive program covering React, JavaScript, HTML/CSS, and modern front-end development practices. Gained expertise in building responsive web applications and user interfaces."
+    },
+    "googleIT": {
+      "title": "Google IT Support",
+      "issuer": "Coursera – Google",
+      "date": "March 2023",
+      "description": "Foundational IT support skills including troubleshooting, customer service, networking, operating systems, system administration, and security fundamentals."
+    },
+    "pythonEverybody": {
+      "title": "Python for Everybody",
+      "issuer": "University of Michigan (Coursera)",
+      "date": "January 2023",
+      "description": "Complete Python programming specialization covering data structures, web scraping, databases, and data visualization. Built strong foundation in Python programming."
+    },
+    "amazonJuniorDev": {
+      "title": "Amazon Junior Software Developer Specialization",
+      "issuer": "Coursera – Amazon",
+      "date": "May 2025",
+      "description": "Comprehensive 7-course specialization covering software development fundamentals, Java programming, data structures, algorithms, database management, full stack development, and generative AI applications."
     }
   },
   "contact": {
