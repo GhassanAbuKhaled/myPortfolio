@@ -45,10 +45,7 @@
     "subtitle": "A showcase of my recent work and personal projects",
     "myTitle": "My Projects",
     "featuredWork": "Featured Work",
-    "viewCaseStudy": "View Case Study",
-    "viewAll": "View All Projects",
-    "allProjectsTitle": "All Projects",
-    "allProjectsDescription": "A complete collection of my work and personal projects"
+    "viewCaseStudy": "View Case Study"
   },
   "project": {
     "ecommerce": {
