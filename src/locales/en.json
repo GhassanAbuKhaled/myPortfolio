@@ -48,11 +48,6 @@
     "viewCaseStudy": "View Case Study"
   },
   "project": {
-    "ecommerce": {
-      "title": "E-Commerce Platform",
-      "description": "A full-stack e-commerce solution with React, Node.js, and Stripe integration.",
-      "longDescription": "Built a complete e-commerce platform featuring user authentication, payment processing, order management, and admin dashboard. Implemented responsive design and optimized for performance."
-    },
     "taskManager": {
       "title": "Task Management App",
       "description": "A collaborative task management application with real-time updates.",
@@ -77,11 +72,6 @@
       "title": "Portfolio Website",
       "description": "A responsive portfolio website built with modern web technologies.",
       "longDescription": "Designed and developed a portfolio website showcasing projects and skills. Features smooth animations, dark mode, and optimized performance."
-    },
-    "personalProjects": {
-      "title": "Personal Portfolio Projects",
-      "description": "A collection of small web development projects showcasing various skills.",
-      "longDescription": "Developed several small projects (08/2023) demonstrating web development and software engineering skills, including: Breakfast Alley, Isabel Mercado, Maxwell, and Lalissa. Each project focuses on different aspects of web development."
     }
   },
   "contact": {
