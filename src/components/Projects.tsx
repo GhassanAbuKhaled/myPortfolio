@@ -59,7 +59,8 @@ const Projects = () => {
       titleKey: "project.ecommerce.title",
       descriptionKey: "project.ecommerce.description",
       longDescriptionKey: "project.ecommerce.longDescription",
-      image: "🛒",
+      image: "/images/projects/taskflow/welcome.png",
+      imageType: "file",
       technologies: ["React", "Node.js", "MongoDB", "Stripe", "Tailwind CSS"],
       githubUrl: "#",
       liveUrl: "#",
@@ -82,29 +83,32 @@ const Projects = () => {
       titleKey: "project.thesis.title",
       descriptionKey: "project.thesis.description",
       longDescriptionKey: "project.thesis.longDescription",
-      image: "📊",
+      image: "/images/projects/taskflow/welcome.png",
+      imageType: "file",
       technologies: ["C", "JavaScript", "Algorithms", "Graph Theory", "Data Structures"],
       githubUrl: "https://github.com/GhassanAbuKhaled/GraphVisualisierung",
       liveUrl: "https://graph-akjt.onrender.com",
-      featured: false
+      featured: true
     },
     {
       id: 4,
       titleKey: "project.lernplano.title",
       descriptionKey: "project.lernplano.description",
       longDescriptionKey: "project.lernplano.longDescription",
-      image: "📚",
+      image: "/images/projects/taskflow/welcome.png",
+      imageType: "file",
       technologies: ["Vue.js", "JavaScript", "PDF Export", "Web Application"],
       githubUrl: "https://github.com/GhassanAbuKhaled/LernPlano",
       liveUrl: "https://lernplano.onrender.com",
-      featured: false
+      featured: true
     },
     {
       id: 5,
       titleKey: "project.personalProjects.title",
       descriptionKey: "project.personalProjects.description",
       longDescriptionKey: "project.personalProjects.longDescription",
-      image: "🌟",
+      image: "/images/projects/taskflow/welcome.png",
+      imageType: "file",
       technologies: ["HTML/CSS", "JavaScript", "React", "Responsive Design"],
       githubUrl: "#",
       liveUrl: "#",
@@ -112,8 +116,8 @@ const Projects = () => {
     },
   ]
 
-  const featuredProjects = useMemo(() => projects.filter(project => project.featured), [projects])
-  const nonFeaturedProjects = useMemo(() => projects.filter(project => !project.featured), [projects])
+  // All projects are now featured
+  const allProjects = useMemo(() => projects, [projects])
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -143,39 +147,17 @@ const Projects = () => {
         >
 
 
-          {/* My Projects */}
-          <motion.div variants={itemVariants}>
-            <h3 className="text-4xl font-bold mb-8 md:text-5xl text-center">{t('projects.myTitle')}</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              {nonFeaturedProjects.map((project) => (
-                <motion.div
-                  key={project.id}
-                  variants={itemVariants}
-                  whileHover={{ y: -5 }}
-                  className="group"
-                >
-                  <ProjectCard project={project} t={t} />
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Space between sections */}
-          <div className="mt-12"></div>
-
-          {/* Section Divider */}
-          <SectionDivider label={t('projects.featuredWork')} />
-
+          {/* Projects Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mt-12 mb-4">{t('projects.title')}</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">{t('projects.title')}</h2>
             <p className="text-xl text-muted-foreground">
               {t('projects.subtitle')}
             </p>
           </motion.div>
 
-          {/* Featured Projects */}
+          {/* All Projects */}
           <div className="grid lg:grid-cols-2 gap-8 mb-16">
-            {featuredProjects.map((project) => (
+            {allProjects.map((project) => (
               <motion.div
                 key={project.id}
                 variants={itemVariants}
