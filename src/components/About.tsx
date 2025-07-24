@@ -58,7 +58,7 @@ const About = () => {
             <motion.div variants={animations.item}>
               <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl overflow-hidden">
                 <img 
-                  src="/me.jpg" 
+                  src="/images/profile/me.jpg" 
                   alt={t('hero.name')} 
                   className="w-full h-full object-cover"
                   loading="lazy"
