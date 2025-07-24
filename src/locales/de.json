@@ -18,16 +18,15 @@
     "title": "Über mich",
     "subtitle": "Leidenschaftlicher Entwickler mit Liebe zur Gestaltung digitaler Erlebnisse",
     "intro": "Hallo, ich bin Ghassan Abu Khaled - Ein Full Stack Entwickler",
-    "paragraph1": "Ich bin ein leidenschaftlicher Full-Stack-Entwickler mit über 3 Jahren Erfahrung im Aufbau von Webanwendungen. Ich bin spezialisiert auf React, Node.js und moderne Webtechnologien, um nahtlose Benutzererlebnisse zu schaffen.",
+    "paragraph1": "Ich bin ein leidenschaftlicher Full-Stack-Entwickler mit über 2 Jahren Erfahrung im Aufbau von Webanwendungen. Ich bin spezialisiert auf React, Node.js und moderne Webtechnologien, um nahtlose Benutzererlebnisse zu schaffen.",
     "paragraph2": "Wenn ich nicht programmiere, findet man mich beim Erkunden neuer Technologien, beim Beitragen zu Open-Source-Projekten oder beim Genießen einer guten Tasse Kaffee während der Planung meines nächsten Projekts.",
     "location": "Standort:",
     "locationValue": "Wuppertal 42107, Deutschland",
     "experience": "Erfahrung:",
-    "experienceValue": "3+ Jahre",
+    "experienceValue": "2+ Jahre",
     "availability": "Verfügbarkeit:",
     "availabilityValue": "Offen für Angebote",
     "stats": {
-      "projects": "Abgeschlossene Projekte",
       "coffee": "Tassen Kaffee",
       "years": "Jahre Erfahrung"
     }
