@@ -1,9 +1,101 @@
 import { motion, useInView } from 'framer-motion'
-import { useRef, useMemo } from 'react'
+import { useRef, useMemo, memo, FC } from 'react'
 import { ExternalLink, Code2, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { useLanguage } from '@/components/LanguageProvider'
+
+interface ProjectCardProps {
+  project: {
+    id: number;
+    titleKey: string;
+    descriptionKey: string;
+    longDescriptionKey: string;
+    image: string;
+    imageType?: string;
+    technologies: string[];
+    githubUrl: string;
+    liveUrl: string;
+    date: string;
+    place: string;
+    role: string;
+    featured: boolean;
+  };
+  t: (key: string) => string;
+}
+
+const ProjectCard: FC<ProjectCardProps> = memo(({ project, t }) => (
+  <Card className="overflow-hidden border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow flex flex-col">
+    <div className="aspect-video overflow-hidden">
+      {project.imageType === "file" ? (
+        <img 
+          src={project.image} 
+          alt={t(project.titleKey)} 
+          className="w-full h-full object-cover"
+          loading="lazy"
+          width="800"
+          height="450"
+        />
+      ) : (
+        <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+          <div className="text-6xl">{project.image}</div>
+        </div>
+      )}
+    </div>
+    <CardHeader>
+      <CardTitle className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <span className="text-xl">{t(project.titleKey)}</span>
+        <div className="flex space-x-2">
+          <Button variant="ghost" size="icon" asChild>
+            <a href={project.githubUrl} aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+              <Code2 className="h-4 w-4" />
+            </a>
+          </Button>
+          <Button variant="ghost" size="icon" asChild>
+            <a href={project.liveUrl} aria-label="Live Demo" target="_blank" rel="noopener noreferrer">
+              <ExternalLink className="h-4 w-4" />
+            </a>
+          </Button>
+        </div>
+      </CardTitle>
+      <div className="mt-2">
+        <div className="flex flex-col space-y-2 mb-4 text-base text-muted-foreground">
+          <div className="flex items-center gap-2">
+            <span className="font-medium">📅</span>
+            <span>{project.date}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="font-medium">🏢</span>
+            <span>{project.place}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="font-medium">👤</span>
+            <span>{project.role}</span>
+          </div>
+        </div>
+        <CardDescription className="text-base">{t(project.longDescriptionKey)}</CardDescription>
+      </div>
+    </CardHeader>
+    <CardContent>
+      <div className="flex flex-wrap gap-2 mb-4">
+        {project.technologies.map((tech) => (
+          <span
+            key={tech}
+            className="px-2 py-1 bg-primary/10 text-primary rounded-md text-sm"
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
+      <Button variant="outline" className="w-full group" asChild>
+        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+          {t('projects.viewProject')}
+          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+        </a>
+      </Button>
+    </CardContent>
+  </Card>
+));
 
 const Projects = () => {
   const ref = useRef(null)
@@ -105,73 +197,7 @@ const Projects = () => {
                 variants={itemVariants}
                 className="group w-full md:max-w-2xl mx-auto lg:max-w-none"
               >
-                <Card className="overflow-hidden border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow flex flex-col">
-                  <div className="aspect-video overflow-hidden">
-                    {project.imageType === "file" ? (
-                      <img 
-                        src={project.image} 
-                        alt={t(project.titleKey)} 
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                        <div className="text-6xl">{project.image}</div>
-                      </div>
-                    )}
-                  </div>
-                  <CardHeader>
-                    <CardTitle className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                      <span className="text-xl">{t(project.titleKey)}</span>
-                      <div className="flex space-x-2">
-                        <Button variant="ghost" size="icon" asChild>
-                          <a href={project.githubUrl} aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-                            <Code2 className="h-4 w-4" />
-                          </a>
-                        </Button>
-                        <Button variant="ghost" size="icon" asChild>
-                          <a href={project.liveUrl} aria-label="Live Demo" target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="h-4 w-4" />
-                          </a>
-                        </Button>
-                      </div>
-                    </CardTitle>
-                    <div className="mt-2">
-                      <div className="flex flex-col space-y-2 mb-4 text-base text-muted-foreground">
-                        <div className="flex items-center gap-2">
-                          <span className="font-medium">📅</span>
-                          <span>{project.date}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <span className="font-medium">🏢</span>
-                          <span>{project.place}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <span className="font-medium">👤</span>
-                          <span>{project.role}</span>
-                        </div>
-                      </div>
-                      <CardDescription className="text-base">{t(project.longDescriptionKey)}</CardDescription>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2 py-1 bg-primary/10 text-primary rounded-md text-sm"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <Button variant="outline" className="w-full group" asChild>
-                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                        {t('projects.viewProject')}
-                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                      </a>
-                    </Button>
-                  </CardContent>
-                </Card>
+                <ProjectCard project={project} t={t} />
               </motion.div>
             ))}
           </div>
