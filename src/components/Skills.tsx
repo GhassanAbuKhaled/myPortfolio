@@ -1,6 +1,61 @@
 import { motion, useInView } from 'framer-motion'
-import { useRef, useMemo } from 'react'
+import { useRef, useMemo, memo, FC } from 'react'
 import { useLanguage } from './LanguageProvider'
+
+interface TechStackItemProps {
+  tech: string
+  index: number
+  isInView: boolean
+}
+
+const TechStackItem: FC<TechStackItemProps> = memo(({ tech, index, isInView }) => (
+  <motion.div
+    initial={{ scale: 0, opacity: 0 }}
+    animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+    transition={{ 
+      delay: index * 0.1, 
+      duration: 0.3,
+      type: "tween"
+    }}
+    whileHover={{ scale: 1.05 }}
+    className="px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm bg-primary/10 border border-primary/20 rounded-full text-primary hover:bg-primary/20 cursor-pointer"
+  >
+    {tech}
+  </motion.div>
+));
+
+interface SkillCategoryProps {
+  category: {
+    title: string
+    skills: Array<{
+      name: string
+      level: number
+      color: string
+    }>
+  }
+  categoryIndex: number
+  isInView: boolean
+  animations: any
+}
+
+const SkillCategory: FC<SkillCategoryProps> = memo(({ category, categoryIndex, isInView, animations }) => (
+  <motion.div
+    variants={animations.item}
+    className="bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-colors"
+  >
+    <h3 className="text-2xl font-semibold mb-6 text-center">{category.title}</h3>
+    <div className="space-y-4">
+      {category.skills.map((skill, skillIndex) => (
+        <SkillBar 
+          key={skill.name} 
+          skill={skill} 
+          delay={categoryIndex * 0.2 + skillIndex * 0.1}
+          isInView={isInView}
+        />
+      ))}
+    </div>
+  </motion.div>
+));
 
 interface SkillBarProps {
   skill: {
@@ -12,7 +67,7 @@ interface SkillBarProps {
   isInView: boolean;
 }
 
-const SkillBar = ({ skill, delay, isInView }: SkillBarProps) => (
+const SkillBar: FC<SkillBarProps> = memo(({ skill, delay, isInView }) => (
   <div className="space-y-2">
     <div className="flex justify-between items-center">
       <span className="font-medium">{skill.name}</span>
@@ -27,7 +82,7 @@ const SkillBar = ({ skill, delay, isInView }: SkillBarProps) => (
       />
     </div>
   </div>
-)
+));
 
 const Skills = () => {
   const ref = useRef(null)
@@ -106,23 +161,13 @@ const Skills = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {skillData.map((category, categoryIndex) => (
-              <motion.div
+              <SkillCategory
                 key={category.title}
-                variants={animations.item}
-                className="bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-colors"
-              >
-                <h3 className="text-2xl font-semibold mb-6 text-center">{category.title}</h3>
-                <div className="space-y-4">
-                  {category.skills.map((skill, skillIndex) => (
-                    <SkillBar 
-                      key={skill.name} 
-                      skill={skill} 
-                      delay={categoryIndex * 0.2 + skillIndex * 0.1}
-                      isInView={isInView}
-                    />
-                  ))}
-                </div>
-              </motion.div>
+                category={category}
+                categoryIndex={categoryIndex}
+                isInView={isInView}
+                animations={animations}
+              />
             ))}
           </div>
 
@@ -131,20 +176,12 @@ const Skills = () => {
             <h3 className="text-2xl font-semibold text-center mb-8">{t('skills.techStack')}</h3>
             <div className="flex flex-wrap justify-center gap-4">
               {techStack.map((tech, index) => (
-                <motion.div
+                <TechStackItem
                   key={tech}
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-                  transition={{ 
-                    delay: index * 0.1, 
-                    duration: 0.3,
-                    type: "tween"
-                  }}
-                  whileHover={{ scale: 1.05 }}
-                  className="px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm bg-primary/10 border border-primary/20 rounded-full text-primary hover:bg-primary/20 cursor-pointer"
-                >
-                  {tech}
-                </motion.div>
+                  tech={tech}
+                  index={index}
+                  isInView={isInView}
+                />
               ))}
             </div>
           </motion.div>
