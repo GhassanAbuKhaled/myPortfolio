@@ -63,6 +63,9 @@ const Projects = () => {
       technologies: ["React", "TypeScript", "Socket.io", "Express", "PostgreSQL"],
       githubUrl: "https://github.com/GhassanAbuKhaled/TaskFlow",
       liveUrl: "https://taskflow.ghassanabukhaled.com/",
+      date: "01/2024 - 03/2024",
+      place: "Personal Project",
+      role: "Full Stack Developer",
       featured: true
     },
     {
@@ -75,6 +78,9 @@ const Projects = () => {
       technologies: ["C", "JavaScript", "Algorithms", "Graph Theory", "Data Structures"],
       githubUrl: "https://github.com/GhassanAbuKhaled/GraphVisualisierung",
       liveUrl: "https://graph-akjt.onrender.com",
+      date: "09/2023 - 11/2023",
+      place: "University of Wuppertal",
+      role: "Bachelor Student",
       featured: true
     },
     {
@@ -87,6 +93,9 @@ const Projects = () => {
       technologies: ["Vue.js", "JavaScript", "PDF Export", "Web Application"],
       githubUrl: "https://github.com/GhassanAbuKhaled/LernPlano",
       liveUrl: "https://lernplano.onrender.com",
+      date: "05/2022 - 08/2022",
+      place: "University of Wuppertal (ZIM)",
+      role: "Intern Developer",
       featured: true
     },
   ]
@@ -168,7 +177,23 @@ const Projects = () => {
                         </Button>
                       </div>
                     </CardTitle>
-                    <CardDescription>{t(project.longDescriptionKey)}</CardDescription>
+                    <div className="mt-2">
+                      <div className="flex flex-col space-y-1 mb-3 text-sm text-muted-foreground">
+                        <div className="flex items-center gap-2">
+                          <span className="font-medium">📅</span>
+                          <span>{project.date}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-medium">🏢</span>
+                          <span>{project.place}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-medium">👤</span>
+                          <span>{project.role}</span>
+                        </div>
+                      </div>
+                      <CardDescription>{t(project.longDescriptionKey)}</CardDescription>
+                    </div>
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-2 mb-4">
