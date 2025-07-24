@@ -178,7 +178,7 @@ const Projects = () => {
                       </div>
                     </CardTitle>
                     <div className="mt-2">
-                      <div className="flex flex-col space-y-1 mb-3 text-sm text-muted-foreground">
+                      <div className="flex flex-col space-y-2 mb-4 text-base text-muted-foreground">
                         <div className="flex items-center gap-2">
                           <span className="font-medium">📅</span>
                           <span>{project.date}</span>
@@ -192,7 +192,7 @@ const Projects = () => {
                           <span>{project.role}</span>
                         </div>
                       </div>
-                      <CardDescription>{t(project.longDescriptionKey)}</CardDescription>
+                      <CardDescription className="text-base">{t(project.longDescriptionKey)}</CardDescription>
                     </div>
                   </CardHeader>
                   <CardContent>
