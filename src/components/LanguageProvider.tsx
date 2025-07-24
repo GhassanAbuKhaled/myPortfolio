@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect, ReactNode, useMemo } from 'react';
+import { LoadingScreen } from './ui/loading-screen';
 
 // Define available languages
 export type Language = 'en' | 'de';
@@ -31,12 +32,12 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider = ({ children }: LanguageProviderProps) => {
-  // Initialize language from localStorage or default to 'de'
+  // Initialize language from localStorage or default to 'en'
   const [language, setLanguage] = useState<Language>(() => {
     const savedLanguage = localStorage.getItem('language');
     return (savedLanguage === 'en' || savedLanguage === 'de') 
       ? savedLanguage as Language 
-      : 'de';
+      : 'en';
   });
   
   const [translations, setTranslations] = useState<Record<Language, TranslationsType>>({
@@ -82,8 +83,6 @@ export const LanguageProvider = ({ children }: LanguageProviderProps) => {
 
   // Function to get translated text
   const t = (key: string): string => {
-    if (isLoading) return key;
-    
     // Handle nested keys like 'nav.home'
     const keys = key.split('.');
     let result: any = translations[language];
@@ -124,6 +123,11 @@ export const LanguageProvider = ({ children }: LanguageProviderProps) => {
     t,
     isLoading 
   }), [language, isLoading]);
+
+  // Show loading screen until translations are loaded
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <LanguageContext.Provider value={contextValue}>

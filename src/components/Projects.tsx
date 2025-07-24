@@ -4,6 +4,7 @@ import { ExternalLink, Code2, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { useLanguage } from '@/components/LanguageProvider'
+import { ImageWithLoading } from '@/components/ui/image-with-loading'
 
 interface ProjectCardProps {
   project: {
@@ -28,13 +29,11 @@ const ProjectCard: FC<ProjectCardProps> = memo(({ project, t }) => (
   <Card className="overflow-hidden border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow flex flex-col">
     <div className="aspect-video overflow-hidden">
       {project.imageType === "file" ? (
-        <img 
+        <ImageWithLoading 
           src={project.image} 
           alt={t(project.titleKey)} 
           className="w-full h-full object-cover"
-          loading="lazy"
-          width="800"
-          height="450"
+          loadingSize="lg"
         />
       ) : (
         <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
