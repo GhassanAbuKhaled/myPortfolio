@@ -98,12 +98,12 @@ const Projects = () => {
           </motion.div>
 
           {/* All Projects */}
-          <div className="grid lg:grid-cols-2 gap-8 mb-16">
+          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
             {allProjects.map((project) => (
               <motion.div
                 key={project.id}
                 variants={itemVariants}
-                className="group w-full lg:w-auto mx-auto lg:mx-0 max-w-md lg:max-w-none"
+                className="group w-full md:max-w-2xl mx-auto lg:max-w-none"
               >
                 <Card className="overflow-hidden border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow flex flex-col">
                   <div className="aspect-video overflow-hidden">
