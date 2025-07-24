@@ -4,7 +4,6 @@ import { ExternalLink, Code2, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { useLanguage } from '@/components/LanguageProvider'
-import { SectionDivider } from '@/components/ui/section-divider'
 
 const ProjectCard = ({ project, t }) => (
   <Card className="h-full border-border hover:border-primary/50 transition-all duration-300">
