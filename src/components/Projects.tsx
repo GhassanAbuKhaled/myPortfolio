@@ -112,7 +112,7 @@ const Projects = () => {
       technologies: ["React", "TypeScript", "Socket.io", "Express", "PostgreSQL"],
       githubUrl: "https://github.com/GhassanAbuKhaled/TaskFlow",
       liveUrl: "https://taskflow.ghassanabukhaled.com/",
-      date: "01/2024 - 03/2024",
+      date: "07/2025 - Present",
       place: "Personal Project",
       role: "Full Stack Developer",
       featured: true
