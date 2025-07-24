@@ -14,7 +14,7 @@ const Navigation = () => {
   // Close mobile menu when resizing to desktop
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1024 && isOpen) {
+      if (window.innerWidth >= 1280 && isOpen) {
         setIsOpen(false)
       }
     }
@@ -68,7 +68,7 @@ const Navigation = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex lg:items-center lg:space-x-6">
+          <div className="hidden xl:flex xl:items-center xl:space-x-6">
             <div className="flex items-center space-x-4">
               {navItems.map((item) => (
                 <a
@@ -118,7 +118,7 @@ const Navigation = () => {
           </div>
 
           {/* Mobile Controls */}
-          <div className="flex lg:hidden items-center space-x-3">
+          <div className="flex xl:hidden items-center space-x-3">
             {/* Theme Toggle (Mobile) */}
             <Button
               variant="ghost"
@@ -159,7 +159,7 @@ const Navigation = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="lg:hidden bg-background/95 backdrop-blur-md border-t border-border/50"
+            className="xl:hidden bg-background/95 backdrop-blur-md border-t border-border/50"
           >
             <div className="px-4 pt-2 pb-4 space-y-2">
               {/* Nav Links */}
