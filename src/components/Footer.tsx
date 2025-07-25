@@ -17,6 +17,7 @@ const Footer = () => {
     { key: 'nav.about', href: '#about' },
     { key: 'nav.projects', href: '#projects' },
     { key: 'nav.skills', href: '#skills' },
+    { key: 'nav.certifications', href: '#certifications' },
     { key: 'nav.contact', href: '#contact' }
   ]
 
