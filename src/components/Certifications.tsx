@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useMemo, memo, FC } from 'react'
-import { Award, ExternalLink, Calendar, Building } from 'lucide-react'
+import { Award, ExternalLink, Calendar, Building, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { useLanguage } from './LanguageProvider'
@@ -56,10 +56,10 @@ const CertificationCard: FC<CertificationCardProps> = memo(({ certification, t }
         {t(certification.descriptionKey)}
       </CardDescription>
       {certification.certificateUrl && (
-        <Button variant="outline" size="sm" className="mt-4" asChild>
+        <Button variant="outline" className="w-full group mt-4" asChild>
           <a href={certification.certificateUrl} target="_blank" rel="noopener noreferrer">
             {t('certifications.viewCertificate')}
-            <ExternalLink className="ml-2 h-3 w-3" />
+            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </a>
         </Button>
       )}
