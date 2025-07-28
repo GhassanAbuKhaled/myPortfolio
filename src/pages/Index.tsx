@@ -10,7 +10,7 @@ import { ThemeProvider } from '@/components/ThemeProvider'
 
 const Index = () => {
   return (
-    <ThemeProvider defaultTheme="dark">
+    <ThemeProvider defaultTheme="light">
       <div className="min-h-screen bg-background text-foreground">
         <Navigation />
         <main>
