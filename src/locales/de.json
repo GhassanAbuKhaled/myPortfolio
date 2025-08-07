@@ -49,8 +49,8 @@
   "project": {
     "taskManager": {
       "title": "Aufgabenverwaltungs-App",
-      "description": "Eine kollaborative Aufgabenverwaltungsanwendung mit Echtzeit-Updates.",
-      "longDescription": "Entwicklung eines Echtzeit-Aufgabenverwaltungssystems mit Teamkollaborationsfunktionen, Drag-and-Drop-Funktionalität und Fortschrittsverfolgung. Verwendung von Socket.io für Echtzeitkommunikation."
+      "description": "Eine persönliche Aufgabenverwaltungsanwendung zur Organisation und Verfolgung von Aufgaben.",
+      "longDescription": "Entwicklung eines Aufgabenverwaltungssystems mit Drag-and-Drop-Funktionalität, Aufgabenkategorisierung und Fortschrittsverfolgung. Funktionen umfassen Aufgabenerstellung, -bearbeitung, -löschung und Statusverwaltung."
     },
     "thesis": {
       "title": "Distanzfärbung von dünn besetzten Graphen",
