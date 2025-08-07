@@ -50,7 +50,7 @@
     "taskManager": {
       "title": "Task Management App",
       "description": "A personal task management application for organizing and tracking tasks.",
-      "longDescription": "Built a task management system with drag-and-drop functionality, task categorization, and progress tracking. Features include task creation, editing, deletion, and status management."
+      "longDescription": "Built a task management system with task categorization and progress tracking. Features include task creation, editing, deletion, and status management with a clean user interface."
     },
     "thesis": {
       "title": "Distance Coloring of Sparse Graphs",
