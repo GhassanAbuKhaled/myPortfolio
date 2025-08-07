@@ -50,7 +50,7 @@
     "taskManager": {
       "title": "Aufgabenverwaltungs-App",
       "description": "Eine persönliche Aufgabenverwaltungsanwendung zur Organisation und Verfolgung von Aufgaben.",
-      "longDescription": "Entwicklung eines Aufgabenverwaltungssystems mit Drag-and-Drop-Funktionalität, Aufgabenkategorisierung und Fortschrittsverfolgung. Funktionen umfassen Aufgabenerstellung, -bearbeitung, -löschung und Statusverwaltung."
+      "longDescription": "Entwicklung eines Aufgabenverwaltungssystems mit Aufgabenkategorisierung und Fortschrittsverfolgung. Funktionen umfassen Aufgabenerstellung, -bearbeitung, -löschung und Statusverwaltung mit einer sauberen Benutzeroberfläche."
     },
     "thesis": {
       "title": "Distanzfärbung von dünn besetzten Graphen",
