@@ -1,0 +1,30 @@
+/* Firefox Mobile Specific Fixes */
+@-moz-document url-prefix() {
+  /* Reset Firefox's default zoom behavior */
+  html {
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  /* Fix button and input scaling */
+  button, input, select, textarea {
+    font-size: inherit !important;
+  }
+  
+  /* Prevent Firefox from enlarging small text */
+  * {
+    -moz-text-size-adjust: none !important;
+  }
+}
+
+/* Firefox Android specific */
+@media screen and (-moz-touch-enabled: 1) {
+  html {
+    -moz-text-size-adjust: 100% !important;
+  }
+  
+  body {
+    -moz-text-size-adjust: 100% !important;
+  }
+}
