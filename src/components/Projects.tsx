@@ -111,12 +111,10 @@ const Projects = () => {
         initial={{ y: 60, opacity: 0, scale: 0.95 }}
         animate={projectInView ? { y: 0, opacity: 1, scale: 1 } : { y: 60, opacity: 0, scale: 0.95 }}
         transition={{ 
-          duration: 0.6, 
-          delay: index * 0.08,
-          ease: [0.25, 0.46, 0.45, 0.94],
-          type: "spring",
-          stiffness: 120,
-          damping: 12
+          duration: 0.5, 
+          delay: index * 0.05,
+          ease: "easeOut",
+          type: "tween"
         }}
         whileHover={{ y: -5, transition: { duration: 0.2 } }}
         className="group w-full md:max-w-2xl mx-auto lg:max-w-none"
