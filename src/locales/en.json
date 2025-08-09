@@ -28,7 +28,8 @@
     "availabilityValue": "Open to opportunities",
     "stats": {
       "coffee": "Cups of Coffee",
-      "years": "Years Experience"
+      "years": "Years Experience",
+      "projects": "Projects Built"
     }
   },
   "skills": {
