@@ -101,6 +101,31 @@ const Projects = () => {
   const isInView = useInView(ref, { once: true })
   const { t } = useLanguage()
 
+  const ProjectWithAnimation = ({ project, index }: { project: any, index: number }) => {
+    const projectRef = useRef(null)
+    const projectInView = useInView(projectRef, { once: true, margin: "0px" })
+    
+    return (
+      <motion.div
+        ref={projectRef}
+        initial={{ y: 60, opacity: 0, scale: 0.95 }}
+        animate={projectInView ? { y: 0, opacity: 1, scale: 1 } : { y: 60, opacity: 0, scale: 0.95 }}
+        transition={{ 
+          duration: 0.6, 
+          delay: index * 0.08,
+          ease: [0.25, 0.46, 0.45, 0.94],
+          type: "spring",
+          stiffness: 120,
+          damping: 12
+        }}
+        whileHover={{ y: -5, transition: { duration: 0.2 } }}
+        className="group w-full md:max-w-2xl mx-auto lg:max-w-none"
+      >
+        <ProjectCard project={project} t={t} />
+      </motion.div>
+    )
+  }
+
   const projects = [
     {
       id: 1,
@@ -147,6 +172,66 @@ const Projects = () => {
       role: "Intern Developer",
       featured: true
     },
+    {
+      id: 4,
+      titleKey: "project.isabel.title",
+      descriptionKey: "project.isabel.description",
+      longDescriptionKey: "project.isabel.longDescription",
+      image: "/images/projects/Isabel.png",
+      imageType: "file",
+      technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+      githubUrl: "https://github.com/GhassanAbuKhaled/isabelMercado",
+      liveUrl: "https://isabelmercado.onrender.com/",
+      date: "08/2023",
+      place: "Personal Project",
+      role: "Frontend Developer",
+      featured: true
+    },
+    {
+      id: 5,
+      titleKey: "project.breakfastAlley.title",
+      descriptionKey: "project.breakfastAlley.description",
+      longDescriptionKey: "project.breakfastAlley.longDescription",
+      image: "/images/projects/BreakfastAlley.png",
+      imageType: "file",
+      technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+      githubUrl: "https://github.com/GhassanAbuKhaled/BreakfastAlley",
+      liveUrl: "https://breakfastalley.onrender.com",
+      date: "07/2023",
+      place: "Personal Project",
+      role: "Frontend Developer",
+      featured: true
+    },
+    {
+      id: 6,
+      titleKey: "project.leslieBoatwright.title",
+      descriptionKey: "project.leslieBoatwright.description",
+      longDescriptionKey: "project.leslieBoatwright.longDescription",
+      image: "/images/projects/leslieBoatwright.png",
+      imageType: "file",
+      technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+      githubUrl: "https://github.com/GhassanAbuKhaled/leslieBoatwright",
+      liveUrl: "https://leslieboatwright.onrender.com",
+      date: "07/2023",
+      place: "Personal Project",
+      role: "Frontend Developer",
+      featured: true
+    },
+    {
+      id: 7,
+      titleKey: "project.maxwell.title",
+      descriptionKey: "project.maxwell.description",
+      longDescriptionKey: "project.maxwell.longDescription",
+      image: "/images/projects/maxwell.png",
+      imageType: "file",
+      technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+      githubUrl: "https://github.com/GhassanAbuKhaled/maxwell",
+      liveUrl: "https://maxwell-xrwe.onrender.com",
+      date: "06/2023",
+      place: "Personal Project",
+      role: "Frontend Developer",
+      featured: true
+    },
   ]
 
   // All projects are now featured
@@ -190,14 +275,8 @@ const Projects = () => {
 
           {/* All Projects */}
           <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-            {allProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                variants={itemVariants}
-                className="group w-full md:max-w-2xl mx-auto lg:max-w-none"
-              >
-                <ProjectCard project={project} t={t} />
-              </motion.div>
+            {allProjects.map((project, index) => (
+              <ProjectWithAnimation key={project.id} project={project} index={index} />
             ))}
           </div>
 

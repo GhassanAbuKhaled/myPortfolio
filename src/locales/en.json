@@ -71,6 +71,26 @@
       "title": "Portfolio Website",
       "description": "A responsive portfolio website built with modern web technologies.",
       "longDescription": "Designed and developed a portfolio website showcasing projects and skills. Features smooth animations, dark mode, and optimized performance."
+    },
+    "isabel": {
+      "title": "Isabel Artist Portfolio",
+      "description": "Educational demo project - fictional artist portfolio website.",
+      "longDescription": "An educational demo project featuring a fictional artist portfolio with biography, artistic journey, and sample works. Built for learning purposes using HTML, CSS, and JavaScript with responsive design."
+    },
+    "breakfastAlley": {
+      "title": "Breakfast Alley",
+      "description": "Educational demo project - fictional restaurant website.",
+      "longDescription": "An educational demo project simulating a restaurant website for 'Breakfast Alley' with menu, reviews, and contact sections. Created for learning web development using HTML, CSS, and JavaScript."
+    },
+    "leslieBoatwright": {
+      "title": "Leslie Boatwright Real Estate",
+      "description": "Educational demo project - fictional real estate agent website.",
+      "longDescription": "An educational demo project featuring a fictional real estate agent website with property listings, services, and contact information. Built for learning purposes using HTML, CSS, and JavaScript."
+    },
+    "maxwell": {
+      "title": "Morgan Maxwell Portfolio",
+      "description": "Educational demo project - fictional graphic designer portfolio.",
+      "longDescription": "An educational demo project featuring a fictional graphic designer portfolio with projects, services, and testimonials. Created for learning web development with focus on HTML, CSS, and JavaScript."
     }
   },
   "certifications": {

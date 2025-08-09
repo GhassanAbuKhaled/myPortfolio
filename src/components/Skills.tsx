@@ -41,7 +41,7 @@ interface SkillCategoryProps {
 const SkillCategory: FC<SkillCategoryProps> = memo(({ category, categoryIndex, isInView, animations }) => (
   <motion.div
     variants={animations.item}
-    className="bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-colors"
+    className="bg-card border border-border rounded-xl p-8 hover:border-primary/50 transition-colors"
   >
     <h3 className="text-2xl font-semibold mb-6 text-center">{category.title}</h3>
     <div className="space-y-4">
@@ -151,7 +151,7 @@ const Skills = () => {
           variants={animations.container}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="max-w-6xl mx-auto"
+          className="max-w-7xl mx-auto"
         >
           <motion.div variants={animations.item} className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">{t('skills.title')}</h2>
@@ -160,7 +160,7 @@ const Skills = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {skillData.map((category, categoryIndex) => (
               <SkillCategory
                 key={category.title}

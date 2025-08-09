@@ -71,6 +71,26 @@
       "title": "Portfolio-Website",
       "description": "Eine responsive Portfolio-Website, die mit modernen Webtechnologien erstellt wurde.",
       "longDescription": "Design und Entwicklung einer Portfolio-Website zur Präsentation von Projekten und Fähigkeiten. Funktionen wie flüssige Animationen, Dark Mode und optimierte Leistung."
+    },
+    "isabel": {
+      "title": "Isabel Künstler-Portfolio",
+      "description": "Lernprojekt - fiktive Künstler-Portfolio-Website.",
+      "longDescription": "Ein Lernprojekt mit einer fiktiven Künstler-Portfolio-Website mit Biografie, künstlerischem Werdegang und Arbeitsproben. Zu Lernzwecken mit HTML, CSS und JavaScript mit responsivem Design erstellt."
+    },
+    "breakfastAlley": {
+      "title": "Breakfast Alley",
+      "description": "Lernprojekt - fiktive Restaurant-Website.",
+      "longDescription": "Ein Lernprojekt, das eine Restaurant-Website für 'Breakfast Alley' mit Menü, Bewertungen und Kontaktbereichen simuliert. Zum Erlernen der Webentwicklung mit HTML, CSS und JavaScript erstellt."
+    },
+    "leslieBoatwright": {
+      "title": "Leslie Boatwright Immobilien",
+      "description": "Lernprojekt - fiktive Immobilienmakler-Website.",
+      "longDescription": "Ein Lernprojekt mit einer fiktiven Immobilienmakler-Website mit Objektangeboten, Services und Kontaktinformationen. Zu Lernzwecken mit HTML, CSS und JavaScript erstellt."
+    },
+    "maxwell": {
+      "title": "Morgan Maxwell Portfolio",
+      "description": "Lernprojekt - fiktives Grafikdesigner-Portfolio.",
+      "longDescription": "Ein Lernprojekt mit einem fiktiven Grafikdesigner-Portfolio mit Projekten, Services und Kundenstimmen. Zum Erlernen der Webentwicklung mit Fokus auf HTML, CSS und JavaScript erstellt."
     }
   },
   "certifications": {
