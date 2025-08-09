@@ -21,6 +21,7 @@ interface ProjectCardProps {
     place: string;
     role: string;
     featured: boolean;
+    isEducational?: boolean;
   };
   t: (key: string) => string;
 }
@@ -43,7 +44,14 @@ const ProjectCard: FC<ProjectCardProps> = memo(({ project, t }) => (
     </div>
     <CardHeader>
       <CardTitle className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-        <span className="text-xl">{t(project.titleKey)}</span>
+        <div className="flex items-center gap-2">
+          <span className="text-xl">{t(project.titleKey)}</span>
+          {project.isEducational && (
+            <span className="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs font-medium">
+              Practice
+            </span>
+          )}
+        </div>
         <div className="flex space-x-2">
           <Button variant="ghost" size="icon" asChild>
             <a href={project.githubUrl} aria-label="GitHub" target="_blank" rel="noopener noreferrer">
@@ -183,7 +191,8 @@ const Projects = () => {
       date: "08/2023",
       place: "Personal Project",
       role: "Frontend Developer",
-      featured: true
+      featured: true,
+      isEducational: true
     },
     {
       id: 5,
@@ -198,7 +207,8 @@ const Projects = () => {
       date: "07/2023",
       place: "Personal Project",
       role: "Frontend Developer",
-      featured: true
+      featured: true,
+      isEducational: true
     },
     {
       id: 6,
@@ -213,7 +223,8 @@ const Projects = () => {
       date: "07/2023",
       place: "Personal Project",
       role: "Frontend Developer",
-      featured: true
+      featured: true,
+      isEducational: true
     },
     {
       id: 7,
@@ -228,7 +239,8 @@ const Projects = () => {
       date: "06/2023",
       place: "Personal Project",
       role: "Frontend Developer",
-      featured: true
+      featured: true,
+      isEducational: true
     },
   ]
 
