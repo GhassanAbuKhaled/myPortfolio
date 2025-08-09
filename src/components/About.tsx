@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useMemo, memo, FC, useCallback } from 'react'
-import { Code, Coffee, Zap } from 'lucide-react'
+import { Code, Coffee, Zap, FolderOpen } from 'lucide-react'
 import { useLanguage } from './LanguageProvider'
 import { ImageWithLoading } from './ui/image-with-loading'
 
@@ -62,6 +62,7 @@ const About = () => {
   const stats = useMemo(() => [
     { icon: Coffee, value: "1000+", label: t('about.stats.coffee') },
     { icon: Zap, value: "2+", label: t('about.stats.years') },
+    { icon: FolderOpen, value: "7", label: t('about.stats.projects') },
   ], [t])
 
   const infoItems = useMemo(() => [
