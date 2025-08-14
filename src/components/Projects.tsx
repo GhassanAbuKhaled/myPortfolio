@@ -150,6 +150,36 @@ const Projects = () => {
     },
     {
       id: 2,
+      titleKey: "project.lalissa.title",
+      descriptionKey: "project.lalissa.description",
+      longDescriptionKey: "project.lalissa.longDescription",
+      image: "/images/projects/lalissa.png",
+      imageType: "file",
+      technologies: ["Vue 3", "TypeScript", "Socket.io", "WebRTC", "Bootstrap", "Node.js"],
+      githubUrl: "https://github.com/GhassanAbuKhaled/lalissa-frontend",
+      liveUrl: "https://lalissa.onrender.com",
+      date: "03/2024",
+      place: "Personal Project",
+      role: "Full Stack Developer",
+      featured: true
+    },
+    {
+      id: 3,
+      titleKey: "project.lernplano.title",
+      descriptionKey: "project.lernplano.description",
+      longDescriptionKey: "project.lernplano.longDescription",
+      image: "/images/projects/lernplano.png",
+      imageType: "file",
+      technologies: ["Vue.js", "JavaScript", "PDF Export", "Web Application"],
+      githubUrl: "https://github.com/GhassanAbuKhaled/LernPlano",
+      liveUrl: "https://lernplano.onrender.com",
+      date: "12/2023",
+      place: "University of Wuppertal (ZIM)",
+      role: "Intern Developer",
+      featured: true
+    },
+    {
+      id: 4,
       titleKey: "project.thesis.title",
       descriptionKey: "project.thesis.description",
       longDescriptionKey: "project.thesis.longDescription",
@@ -164,22 +194,7 @@ const Projects = () => {
       featured: true
     },
     {
-      id: 3,
-      titleKey: "project.lernplano.title",
-      descriptionKey: "project.lernplano.description",
-      longDescriptionKey: "project.lernplano.longDescription",
-      image: "/images/projects/lernplano.png",
-      imageType: "file",
-      technologies: ["Vue.js", "JavaScript", "PDF Export", "Web Application"],
-      githubUrl: "https://github.com/GhassanAbuKhaled/LernPlano",
-      liveUrl: "https://lernplano.onrender.com",
-      date: "05/2022 - 08/2022",
-      place: "University of Wuppertal (ZIM)",
-      role: "Intern Developer",
-      featured: true
-    },
-    {
-      id: 4,
+      id: 5,
       titleKey: "project.isabel.title",
       descriptionKey: "project.isabel.description",
       longDescriptionKey: "project.isabel.longDescription",
@@ -195,7 +210,7 @@ const Projects = () => {
       isEducational: true
     },
     {
-      id: 5,
+      id: 6,
       titleKey: "project.breakfastAlley.title",
       descriptionKey: "project.breakfastAlley.description",
       longDescriptionKey: "project.breakfastAlley.longDescription",
@@ -211,7 +226,7 @@ const Projects = () => {
       isEducational: true
     },
     {
-      id: 6,
+      id: 7,
       titleKey: "project.leslieBoatwright.title",
       descriptionKey: "project.leslieBoatwright.description",
       longDescriptionKey: "project.leslieBoatwright.longDescription",
@@ -227,7 +242,7 @@ const Projects = () => {
       isEducational: true
     },
     {
-      id: 7,
+      id: 8,
       titleKey: "project.maxwell.title",
       descriptionKey: "project.maxwell.description",
       longDescriptionKey: "project.maxwell.longDescription",
