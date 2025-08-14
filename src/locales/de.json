@@ -92,6 +92,11 @@
       "title": "Morgan Maxwell Portfolio",
       "description": "Lernprojekt - fiktives Grafikdesigner-Portfolio.",
       "longDescription": "Ein Lernprojekt mit einem fiktiven Grafikdesigner-Portfolio mit Projekten, Services und Kundenstimmen. Zum Erlernen der Webentwicklung mit Fokus auf HTML, CSS und JavaScript erstellt."
+    },
+    "lalissa": {
+      "title": "Lalissa - Moderne Social Chat Plattform",
+      "description": "Echtzeit-Messaging-Anwendung mit Video-/Audio-Anruf-Funktionen.",
+      "longDescription": "Eine Echtzeit-Messaging-Anwendung, entwickelt mit Vue.js und TypeScript, mit Video-/Audio-Anrufen, ziehbaren Anruffenstern und responsivem Design. Beinhaltet Benutzerauthentifizierung, Live-Chat mit Socket.io und eine moderne Benutzeroberfläche, optimiert für Desktop und mobile Geräte."
     }
   },
   "certifications": {

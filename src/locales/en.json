@@ -92,6 +92,11 @@
       "title": "Morgan Maxwell Portfolio",
       "description": "Educational demo project - fictional graphic designer portfolio.",
       "longDescription": "An educational demo project featuring a fictional graphic designer portfolio with projects, services, and testimonials. Created for learning web development with focus on HTML, CSS, and JavaScript."
+    },
+    "lalissa": {
+      "title": "Lalissa - Modern Social Chat Platform",
+      "description": "Real-time messaging application with video/audio calling capabilities.",
+      "longDescription": "A real-time messaging application built with Vue.js and TypeScript, featuring video/audio calling, draggable call windows, and responsive design. Includes user authentication, live chat with Socket.io, and a modern UI optimized for both desktop and mobile devices."
     }
   },
   "certifications": {
