@@ -92,7 +92,7 @@ const About = () => {
             <motion.div variants={animations.item}>
               <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl overflow-hidden">
                 <ImageWithLoading 
-                  src="/images/profile/me.jpg" 
+                  src={`${import.meta.env.BASE_URL}images/profile/me.jpg`}
                   alt="Ghassan Abu Khaled" 
                   className="w-full h-full object-cover"
                   loadingSize="lg"
