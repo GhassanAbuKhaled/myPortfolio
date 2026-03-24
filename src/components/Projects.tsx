@@ -142,7 +142,7 @@ const Projects = () => {
       imageType: "file",
       technologies: ["React", "TypeScript", "Java", "Spring Boot", "MySQL", "AWS EC2", "AWS S3", "Tailwind"],
       githubUrl: "https://github.com/GhassanAbuKhaled/TaskFlow",
-      liveUrl: "https://taskflow.ghassanabukhaled.com/",
+      liveUrl: "https://ghassanabukhaled.github.io/TaskFlow/",
       date: "07/2025 - Present",
       place: "Personal Project",
       role: "Full Stack Developer",
