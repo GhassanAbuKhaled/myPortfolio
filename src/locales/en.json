@@ -56,7 +56,7 @@
     "lalisa": {
       "title": "Lalisa - AI Calorie & Nutrition Tracker",
       "description": "AI-powered food tracking app. Snap a meal and get instant nutrition.",
-      "longDescription": "A food-tracking mobile app that turns your camera into a calorie counter: snap any meal and Google's Gemini AI instantly estimates calories and macros. Built cross-platform with React Native and Expo on a Supabase backend, with secure server-side scan limits, premium subscriptions via RevenueCat, and product analytics via PostHog. Published on the App Store."
+      "longDescription": "A food-tracking mobile app that turns your camera into a calorie counter: snap any meal and Google's Gemini AI instantly estimates calories and macros. Built cross-platform with React Native and Expo on a Supabase backend, with AI scanning as a premium tier (RevenueCat) and product analytics via PostHog. Published on the App Store."
     },
     "thesis": {
       "title": "Distance Coloring of Sparse Graphs",
