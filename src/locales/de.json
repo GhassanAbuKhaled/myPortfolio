@@ -53,6 +53,11 @@
       "description": "Eine persönliche Aufgabenverwaltungsanwendung zur Organisation und Verfolgung von Aufgaben.",
       "longDescription": "Entwicklung eines Aufgabenverwaltungssystems mit Aufgabenkategorisierung und Fortschrittsverfolgung. Funktionen umfassen Aufgabenerstellung, -bearbeitung, -löschung und Statusverwaltung mit einer sauberen Benutzeroberfläche."
     },
+    "lalisa": {
+      "title": "Lalisa - KI-Kalorien- & Ernährungstracker",
+      "description": "KI-gestützte Ernährungs-App. Mahlzeit fotografieren und sofort Nährwerte erhalten.",
+      "longDescription": "Eine Ernährungs-App, die die Kamera in einen Kalorienzähler verwandelt: einfach eine Mahlzeit fotografieren und Googles Gemini-KI schätzt sofort Kalorien und Makronährstoffe. Plattformübergreifend mit React Native und Expo auf einem Supabase-Backend entwickelt, mit serverseitig abgesicherten Scan-Limits, Premium-Abonnements über RevenueCat und Produktanalyse über PostHog. Im App Store veröffentlicht."
+    },
     "thesis": {
       "title": "Distanzfärbung von dünn besetzten Graphen",
       "description": "Bachelorarbeit über effiziente Implementierung von Algorithmen zur Distanzfärbung von dünn besetzten Graphen.",
@@ -94,7 +99,7 @@
       "longDescription": "Ein Lernprojekt mit einem fiktiven Grafikdesigner-Portfolio mit Projekten, Services und Kundenstimmen. Zum Erlernen der Webentwicklung mit Fokus auf HTML, CSS und JavaScript erstellt."
     },
     "lalissa": {
-      "title": "Lalissa - Moderne Social Chat Plattform",
+      "title": "Moderne Social Chat Plattform",
       "description": "Echtzeit-Messaging-Anwendung mit Video-/Audio-Anruf-Funktionen.",
       "longDescription": "Eine Echtzeit-Messaging-Anwendung, entwickelt mit Vue.js und TypeScript, mit Video-/Audio-Anrufen, ziehbaren Anruffenstern und responsivem Design. Beinhaltet Benutzerauthentifizierung, Live-Chat mit Socket.io und eine moderne Benutzeroberfläche, optimiert für Desktop und mobile Geräte."
     }

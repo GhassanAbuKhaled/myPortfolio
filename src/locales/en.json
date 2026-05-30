@@ -53,6 +53,11 @@
       "description": "A personal task management application for organizing and tracking tasks.",
       "longDescription": "Built a task management system with task categorization and progress tracking. Features include task creation, editing, deletion, and status management with a clean user interface."
     },
+    "lalisa": {
+      "title": "Lalisa - AI Calorie & Nutrition Tracker",
+      "description": "AI-powered food tracking app. Snap a meal and get instant nutrition.",
+      "longDescription": "A food-tracking mobile app that turns your camera into a calorie counter: snap any meal and Google's Gemini AI instantly estimates calories and macros. Built cross-platform with React Native and Expo on a Supabase backend, with secure server-side scan limits, premium subscriptions via RevenueCat, and product analytics via PostHog. Published on the App Store."
+    },
     "thesis": {
       "title": "Distance Coloring of Sparse Graphs",
       "description": "Bachelor thesis on efficient implementation of algorithms for distance coloring of sparse graphs.",
@@ -94,7 +99,7 @@
       "longDescription": "An educational demo project featuring a fictional graphic designer portfolio with projects, services, and testimonials. Created for learning web development with focus on HTML, CSS, and JavaScript."
     },
     "lalissa": {
-      "title": "Lalissa - Modern Social Chat Platform",
+      "title": "Modern Social Chat Platform",
       "description": "Real-time messaging application with video/audio calling capabilities.",
       "longDescription": "A real-time messaging application built with Vue.js and TypeScript, featuring video/audio calling, draggable call windows, and responsive design. Includes user authentication, live chat with Socket.io, and a modern UI optimized for both desktop and mobile devices."
     }

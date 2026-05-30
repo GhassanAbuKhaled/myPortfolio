@@ -1,10 +1,19 @@
 import { motion, useInView } from 'framer-motion'
-import { useRef, useMemo, memo, FC } from 'react'
-import { ExternalLink, Code2, ArrowRight } from 'lucide-react'
+import { useRef, useMemo, memo, useState, useEffect, FC } from 'react'
+import { ExternalLink, Code2, ArrowRight, Apple } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { useLanguage } from '@/components/LanguageProvider'
 import { ImageWithLoading } from '@/components/ui/image-with-loading'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+  type CarouselApi,
+} from '@/components/ui/carousel'
+import { cn } from '@/lib/utils'
 
 interface ProjectCardProps {
   project: {
@@ -14,8 +23,10 @@ interface ProjectCardProps {
     longDescriptionKey: string;
     image: string;
     imageType?: string;
+    images?: string[];
     technologies: string[];
     githubUrl: string;
+    appStoreUrl?: string;
     liveUrl: string;
     date: string;
     place: string;
@@ -26,22 +37,81 @@ interface ProjectCardProps {
   t: (key: string) => string;
 }
 
+const ProjectGallery: FC<{ images: string[]; alt: string }> = ({ images, alt }) => {
+  const [api, setApi] = useState<CarouselApi>()
+  const [selected, setSelected] = useState(0)
+
+  useEffect(() => {
+    if (!api) return
+    const onSelect = () => setSelected(api.selectedScrollSnap())
+    onSelect()
+    api.on('select', onSelect)
+    api.on('reInit', onSelect)
+    return () => {
+      api.off('select', onSelect)
+      api.off('reInit', onSelect)
+    }
+  }, [api])
+
+  return (
+    <div className="relative">
+      <Carousel setApi={setApi} opts={{ loop: true }} className="w-full">
+        <CarouselContent className="ml-0">
+          {images.map((src, i) => (
+            <CarouselItem key={src} className="pl-0">
+              {/* Backdrop stays light in both themes — it matches the screenshots' own background */}
+              <div className="aspect-video w-full flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#eef2ee] to-[#dde7de]">
+                <img
+                  src={src}
+                  alt={`${alt} — screenshot ${i + 1} of ${images.length}`}
+                  loading="lazy"
+                  className="h-full w-auto object-contain"
+                />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="left-2 border-0 bg-background/70 text-foreground shadow-sm backdrop-blur-sm hover:bg-background hover:text-foreground" />
+        <CarouselNext className="right-2 border-0 bg-background/70 text-foreground shadow-sm backdrop-blur-sm hover:bg-background hover:text-foreground" />
+      </Carousel>
+      <div className="absolute bottom-2.5 left-1/2 z-10 flex -translate-x-1/2 items-center gap-1.5">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            onClick={() => api?.scrollTo(i)}
+            aria-label={`Go to screenshot ${i + 1}`}
+            className={cn(
+              'h-1.5 rounded-full transition-all duration-300',
+              selected === i ? 'w-5 bg-primary' : 'w-1.5 bg-foreground/25 hover:bg-foreground/50'
+            )}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 const ProjectCard: FC<ProjectCardProps> = memo(({ project, t }) => (
   <Card className="overflow-hidden border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow flex flex-col">
-    <div className="aspect-video overflow-hidden">
-      {project.imageType === "file" ? (
-        <ImageWithLoading 
-          src={project.image} 
-          alt={t(project.titleKey)} 
-          className="w-full h-full object-cover"
-          loadingSize="lg"
-        />
-      ) : (
-        <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-          <div className="text-6xl">{project.image}</div>
-        </div>
-      )}
-    </div>
+    {project.images && project.images.length > 1 ? (
+      <ProjectGallery images={project.images} alt={t(project.titleKey)} />
+    ) : (
+      <div className="aspect-video overflow-hidden">
+        {project.imageType === "file" ? (
+          <ImageWithLoading
+            src={project.image}
+            alt={t(project.titleKey)}
+            className="w-full h-full object-cover"
+            loadingSize="lg"
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+            <div className="text-6xl">{project.image}</div>
+          </div>
+        )}
+      </div>
+    )}
     <CardHeader>
       <CardTitle className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div className="flex items-center gap-2">
@@ -53,16 +123,27 @@ const ProjectCard: FC<ProjectCardProps> = memo(({ project, t }) => (
           )}
         </div>
         <div className="flex space-x-2">
-          <Button variant="ghost" size="icon" asChild>
-            <a href={project.githubUrl} aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-              <Code2 className="h-4 w-4" />
-            </a>
-          </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <a href={project.liveUrl} aria-label="Live Demo" target="_blank" rel="noopener noreferrer">
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          </Button>
+          {project.githubUrl && (
+            <Button variant="ghost" size="icon" asChild>
+              <a href={project.githubUrl} aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+                <Code2 className="h-4 w-4" />
+              </a>
+            </Button>
+          )}
+          {project.appStoreUrl && (
+            <Button variant="ghost" size="icon" asChild>
+              <a href={project.appStoreUrl} aria-label="Download on the App Store" target="_blank" rel="noopener noreferrer">
+                <Apple className="h-4 w-4" />
+              </a>
+            </Button>
+          )}
+          {!project.appStoreUrl && (
+            <Button variant="ghost" size="icon" asChild>
+              <a href={project.liveUrl} aria-label="Live Demo" target="_blank" rel="noopener noreferrer">
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </Button>
+          )}
         </div>
       </CardTitle>
       <div className="mt-2">
@@ -95,7 +176,7 @@ const ProjectCard: FC<ProjectCardProps> = memo(({ project, t }) => (
         ))}
       </div>
       <Button variant="outline" className="w-full group" asChild>
-        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+        <a href={project.appStoreUrl || project.liveUrl} target="_blank" rel="noopener noreferrer">
           {t('projects.viewProject')}
           <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
         </a>
@@ -133,6 +214,28 @@ const Projects = () => {
   }
 
   const projects = [
+    {
+      id: 9,
+      titleKey: "project.lalisa.title",
+      descriptionKey: "project.lalisa.description",
+      longDescriptionKey: "project.lalisa.longDescription",
+      image: `${import.meta.env.BASE_URL}images/projects/lalisa/01-scan.png`,
+      imageType: "file",
+      images: [
+        `${import.meta.env.BASE_URL}images/projects/lalisa/01-scan.png`,
+        `${import.meta.env.BASE_URL}images/projects/lalisa/02-dashboard.png`,
+        `${import.meta.env.BASE_URL}images/projects/lalisa/03-ai-chat.png`,
+        `${import.meta.env.BASE_URL}images/projects/lalisa/04-insights.png`,
+      ],
+      technologies: ["React Native", "Expo", "TypeScript", "Supabase", "Gemini AI", "RevenueCat"],
+      githubUrl: "",
+      appStoreUrl: "https://apps.apple.com/us/app/lalisa/id6763659459",
+      liveUrl: "https://lalisa.app",
+      date: "03/2026 - Present",
+      place: "Personal Project",
+      role: "Founder & Full Stack Developer",
+      featured: true
+    },
     {
       id: 1,
       titleKey: "project.taskManager.title",
