@@ -56,7 +56,7 @@
     "lalisa": {
       "title": "Lalisa - KI-Kalorien- & Ernährungstracker",
       "description": "KI-gestützte Ernährungs-App. Mahlzeit fotografieren und sofort Nährwerte erhalten.",
-      "longDescription": "Eine Ernährungs-App, die die Kamera in einen Kalorienzähler verwandelt: einfach eine Mahlzeit fotografieren und Googles Gemini-KI schätzt sofort Kalorien und Makronährstoffe. Plattformübergreifend mit React Native und Expo auf einem Supabase-Backend entwickelt, mit serverseitig abgesicherten Scan-Limits, Premium-Abonnements über RevenueCat und Produktanalyse über PostHog. Im App Store veröffentlicht."
+      "longDescription": "Eine Ernährungs-App, die die Kamera in einen Kalorienzähler verwandelt: einfach eine Mahlzeit fotografieren und Googles Gemini-KI schätzt sofort Kalorien und Makronährstoffe. Plattformübergreifend mit React Native und Expo auf einem Supabase-Backend entwickelt, mit KI-Scannen als Premium-Funktion (RevenueCat) und Produktanalyse über PostHog. Im App Store veröffentlicht."
     },
     "thesis": {
       "title": "Distanzfärbung von dünn besetzten Graphen",
