@@ -61,8 +61,8 @@ const About = () => {
 
   const stats = useMemo(() => [
     { icon: Coffee, value: "1000+", label: t('about.stats.coffee') },
-    { icon: Zap, value: "2+", label: t('about.stats.years') },
-    { icon: FolderOpen, value: "8", label: t('about.stats.projects') },
+    { icon: Zap, value: "3+", label: t('about.stats.years') },
+    { icon: FolderOpen, value: "9", label: t('about.stats.projects') },
   ], [t])
 
   const infoItems = useMemo(() => [
