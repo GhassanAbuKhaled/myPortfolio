@@ -4,6 +4,7 @@
     "about": "Über mich",
     "projects": "Projekte",
     "skills": "Fähigkeiten",
+    "ai": "KI",
     "certifications": "Zertifizierungen",
     "contact": "Kontakt"
   },
@@ -39,6 +40,30 @@
     "backend": "Backend",
     "tools": "Tools & Andere",
     "techStack": "Tech Stack"
+  },
+  "ai": {
+    "eyebrow": "KI-gestützter Workflow",
+    "title": "Ich entwickle mit KI – nicht drumherum",
+    "subtitle": "Ich nutze KI wie einen erfahrenen Pair-Programmer: gesteuert durch präzise Prompts, jede Zeile geprüft – und dadurch schneller am Ziel.",
+    "toolsLabel": "Die Tools, zu denen ich täglich greife",
+    "capabilities": {
+      "prompt": {
+        "title": "Prompt Engineering",
+        "desc": "Kontextreiche, präzise Prompts, die produktionsreifen Code liefern – kein Boilerplate, das ich neu schreiben muss."
+      },
+      "pair": {
+        "title": "KI-Pair-Programming",
+        "desc": "Zusammenarbeit in Echtzeit direkt im Editor – ich bleibe im Flow, statt in einen Chat-Tab zu wechseln."
+      },
+      "agentic": {
+        "title": "Agentische Workflows",
+        "desc": "Refactorings über mehrere Dateien, Tests und Migrationen an Agenten wie Claude Code delegieren – und das Ergebnis verifizieren."
+      },
+      "review": {
+        "title": "KI-gestütztes Review",
+        "desc": "KI als unermüdlicher zweiter Reviewer, der Bugs und Edge-Cases findet, bevor sie in einen Pull Request gelangen."
+      }
+    }
   },
   "projects": {
     "title": "Ausgewählte Projekte",
