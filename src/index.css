@@ -172,6 +172,18 @@
 }
 .animate-pulse-dot { animation: pulse-dot 1.6s ease-in-out infinite; }
 
+/* Infinite marquee for the Skills tech wall */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee var(--marquee-duration, 40s) linear infinite;
+  will-change: transform;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .animate-caret, .animate-pulse-dot { animation: none; }
+  .animate-caret,
+  .animate-pulse-dot,
+  .animate-marquee { animation: none; }
 }
