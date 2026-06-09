@@ -34,8 +34,8 @@
     }
   },
   "skills": {
-    "title": "Skills & Technologies",
-    "subtitle": "Technologies I work with to bring ideas to life",
+    "title": "Tools of My Craft",
+    "subtitle": "The languages, frameworks, and tools I reach for to turn ideas into shipped products.",
     "frontend": "Frontend",
     "backend": "Backend",
     "tools": "Tools & Others",

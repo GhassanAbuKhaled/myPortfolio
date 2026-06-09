@@ -1,193 +1,150 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useMemo, memo, FC } from 'react'
+import { IconType } from 'react-icons'
+import {
+  SiReact,
+  SiVuedotjs,
+  SiAngular,
+  SiTypescript,
+  SiTailwindcss,
+  SiFramer,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiMysql,
+  SiSpringboot,
+  SiGit,
+  SiDocker,
+  SiFigma,
+} from 'react-icons/si'
+import { FaJava, FaAws } from 'react-icons/fa'
+import { Webhook, FlaskConical } from 'lucide-react'
 import { useLanguage } from './LanguageProvider'
 
-interface TechStackItemProps {
-  tech: string
-  index: number
-  isInView: boolean
+interface Tech {
+  name: string
+  Icon: IconType
+  /** Brand color, or a CSS var string for theme-aware tokens. */
+  color: string
 }
 
-const TechStackItem: FC<TechStackItemProps> = memo(({ tech, index, isInView }) => (
-  <motion.div
-    initial={{ scale: 0, opacity: 0 }}
-    animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-    transition={{
-      delay: index * 0.1,
-      duration: 0.3,
-      type: "tween"
-    }}
-    whileHover={{ scale: 1.05 }}
-    className="px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm bg-primary/10 border border-primary/20 rounded-full text-primary hover:bg-primary/20 cursor-pointer"
+const PRIMARY = 'hsl(var(--primary))'
+const FOREGROUND = 'hsl(var(--foreground))'
+
+/**
+ * Two balanced rows that mix frontend / backend / tools. Each row is long
+ * enough (and includes wide labels like "Tailwind CSS") that a single copy
+ * always overflows the capped container — so the seamless duplicate used for
+ * the loop is never visible on screen at the same time.
+ */
+const ROWS: { items: Tech[]; duration: number; reverse: boolean }[] = [
+  {
+    reverse: false,
+    duration: 52,
+    items: [
+      { name: 'React', Icon: SiReact, color: '#61DAFB' },
+      { name: 'TypeScript', Icon: SiTypescript, color: '#3178C6' },
+      { name: 'Tailwind CSS', Icon: SiTailwindcss, color: '#06B6D4' },
+      { name: 'Node.js', Icon: SiNodedotjs, color: '#5FA04E' },
+      { name: 'Spring Boot', Icon: SiSpringboot, color: '#6DB33F' },
+      { name: 'MongoDB', Icon: SiMongodb, color: '#47A248' },
+      { name: 'Docker', Icon: SiDocker, color: '#2496ED' },
+      { name: 'Figma', Icon: SiFigma, color: '#F24E1E' },
+      { name: 'Angular', Icon: SiAngular, color: '#DD0031' },
+    ],
+  },
+  {
+    reverse: true,
+    duration: 58,
+    items: [
+      { name: 'Vue', Icon: SiVuedotjs, color: '#4FC08D' },
+      { name: 'Framer Motion', Icon: SiFramer, color: '#0055FF' },
+      { name: 'Express', Icon: SiExpress, color: FOREGROUND },
+      { name: 'Java', Icon: FaJava, color: '#E76F00' },
+      { name: 'MySQL', Icon: SiMysql, color: '#4479A1' },
+      { name: 'REST APIs', Icon: Webhook, color: PRIMARY },
+      { name: 'Git', Icon: SiGit, color: '#F05032' },
+      { name: 'AWS', Icon: FaAws, color: '#FF9900' },
+      { name: 'Testing', Icon: FlaskConical, color: PRIMARY },
+    ],
+  },
+]
+
+const TechChip: FC<{ tech: Tech; clone?: boolean }> = memo(({ tech, clone }) => (
+  <div
+    aria-hidden={clone || undefined}
+    className={`mr-4 flex shrink-0 items-center gap-3 rounded-xl border border-border bg-card/70 px-5 py-3 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-glow ${
+      clone ? 'motion-reduce:hidden' : ''
+    }`}
   >
-    {tech}
-  </motion.div>
-));
-
-interface SkillCategoryProps {
-  category: {
-    title: string
-    skills: Array<{
-      name: string
-      level: number
-      color: string
-    }>
-  }
-  categoryIndex: number
-  isInView: boolean
-  animations: any
-}
-
-const SkillCategory: FC<SkillCategoryProps> = memo(({ category, categoryIndex, isInView, animations }) => (
-  <motion.div
-    variants={animations.item}
-    className="bg-card border border-border rounded-xl p-8 hover:border-primary/50 transition-colors"
-  >
-    <h3 className="text-2xl font-semibold mb-6 text-center">{category.title}</h3>
-    <div className="space-y-4">
-      {category.skills.map((skill, skillIndex) => (
-        <SkillBar
-          key={skill.name}
-          skill={skill}
-          delay={categoryIndex * 0.2 + skillIndex * 0.1}
-          isInView={isInView}
-        />
-      ))}
-    </div>
-  </motion.div>
-));
-
-interface SkillBarProps {
-  skill: {
-    name: string;
-    level: number;
-    color: string;
-  };
-  delay: number;
-  isInView: boolean;
-}
-
-const SkillBar: FC<SkillBarProps> = memo(({ skill, delay, isInView }) => (
-  <div className="space-y-2">
-    <div className="flex justify-between items-center">
-      <span className="font-medium">{skill.name}</span>
-      <span className="text-sm text-muted-foreground">{skill.level}%</span>
-    </div>
-    <div className="h-2 bg-muted rounded-full overflow-hidden">
-      <motion.div
-        className={`h-full bg-gradient-to-r ${skill.color} rounded-full`}
-        initial={{ width: 0 }}
-        animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
-        transition={{ duration: 1, delay, ease: "easeOut" }}
-      />
-    </div>
+    <tech.Icon className="h-5 w-5 shrink-0" style={{ color: tech.color }} aria-hidden />
+    <span className="whitespace-nowrap text-sm font-medium">{tech.name}</span>
   </div>
-));
+))
+
+const MarqueeRow: FC<{ items: Tech[]; reverse: boolean; duration: number }> = memo(
+  ({ items, reverse, duration }) => (
+    <div className="group relative overflow-hidden py-6 [mask-image:linear-gradient(to_right,transparent,#000_7%,#000_93%,transparent)] motion-reduce:overflow-visible motion-reduce:py-0 motion-reduce:[mask-image:none]">
+      <div
+        className="flex w-max animate-marquee group-hover:[animation-play-state:paused] motion-reduce:w-full motion-reduce:flex-wrap motion-reduce:justify-center motion-reduce:gap-y-3"
+        style={{
+          ['--marquee-duration' as string]: `${duration}s`,
+          animationDirection: reverse ? 'reverse' : 'normal',
+        }}
+      >
+        {items.map((tech) => (
+          <TechChip key={tech.name} tech={tech} />
+        ))}
+        {/* Seamless duplicate — hidden from AT and from reduced-motion layout */}
+        {items.map((tech) => (
+          <TechChip key={`dup-${tech.name}`} tech={tech} clone />
+        ))}
+      </div>
+    </div>
+  ),
+)
 
 const Skills = () => {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
+  const isInView = useInView(ref, { once: true, margin: '-80px' })
   const { t } = useLanguage()
 
-  const animations = useMemo(() => ({
-    container: {
-      hidden: { opacity: 0 },
-      visible: {
-        opacity: 1,
-        transition: { delayChildren: 0.3, staggerChildren: 0.1 }
-      }
-    },
-    item: {
-      hidden: { y: 50, opacity: 0 },
-      visible: { y: 0, opacity: 1 }
-    }
-  }), [])
-
-  const skillData = useMemo(() => [
-    {
-      title: t('skills.frontend'),
-      skills: [
-        { name: "React", level: 85, color: "from-blue-500 to-cyan-500" },
-        { name: "Vue", level: 80, color: "from-blue-500 to-cyan-500" },
-        { name: "Angular", level: 70, color: "from-gray-800 to-gray-600" },
-        { name: "TypeScript", level: 85, color: "from-blue-600 to-blue-400" },
-        { name: "Tailwind CSS", level: 95, color: "from-cyan-500 to-blue-500" },
-        { name: "Framer Motion", level: 75, color: "from-purple-500 to-pink-500" }
-      ]
-    },
-    {
-      title: t('skills.backend'),
-      skills: [
-        { name: "Node.js", level: 85, color: "from-green-600 to-green-400" },
-        { name: "Express", level: 80, color: "from-gray-600 to-gray-400" },
-        { name: "MongoDB", level: 75, color: "from-green-500 to-emerald-500" },
-        { name: "MySQL", level: 70, color: "from-blue-600 to-indigo-600" },
-        { name: "Java", level: 80, color: "from-orange-500 to-red-500" },
-        { name: "Spring Boot", level: 75, color: "from-green-700 to-lime-500" },
-        { name: "REST APIs", level: 90, color: "from-orange-500 to-red-500" }
-      ]
-    },
-    {
-      title: t('skills.tools'),
-      skills: [
-        { name: "Git", level: 85, color: "from-orange-600 to-red-600" },
-        { name: "Docker", level: 70, color: "from-blue-500 to-blue-700" },
-        { name: "AWS", level: 65, color: "from-yellow-500 to-orange-500" },
-        { name: "Figma", level: 80, color: "from-purple-500 to-pink-500" },
-        { name: "Testing", level: 75, color: "from-green-500 to-teal-500" }
-      ]
-    }
-  ], [t])
-
-  // const techStack = useMemo(() => 
-  //   ['React', 'TypeScript', 'Node.js', 'MongoDB', 'PostgreSQL', 'AWS', 'Docker', 'Git'], 
-  // []);
+  const animations = useMemo(
+    () => ({
+      container: {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { delayChildren: 0.2, staggerChildren: 0.15 } },
+      },
+      item: {
+        hidden: { y: 40, opacity: 0 },
+        visible: { y: 0, opacity: 1 },
+      },
+    }),
+    [],
+  )
 
   return (
-    <section id="skills" className="py-20">
-      <div className="container mx-auto px-4">
-        <motion.div
-          ref={ref}
-          variants={animations.container}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="max-w-7xl mx-auto"
-        >
-          <motion.div variants={animations.item} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">{t('skills.title')}</h2>
-            <p className="text-xl text-muted-foreground">
-              {t('skills.subtitle')}
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {skillData.map((category, categoryIndex) => (
-              <SkillCategory
-                key={category.title}
-                category={category}
-                categoryIndex={categoryIndex}
-                isInView={isInView}
-                animations={animations}
-              />
-            ))}
-          </div>
-
-          {/* Interactive Tech Stack */}
-          {/* <motion.div variants={animations.item} className="mt-16">
-            <h3 className="text-2xl font-semibold text-center mb-8">{t('skills.techStack')}</h3>
-            <div className="flex flex-wrap justify-center gap-4">
-              {techStack.map((tech, index) => (
-                <TechStackItem
-                  key={tech}
-                  tech={tech}
-                  index={index}
-                  isInView={isInView}
-                />
-              ))}
-            </div>
-          </motion.div> */}
+    <section id="skills" className="overflow-hidden py-20">
+      <motion.div
+        ref={ref}
+        variants={animations.container}
+        initial="hidden"
+        animate={isInView ? 'visible' : 'hidden'}
+        className="mx-auto max-w-6xl"
+      >
+        <motion.div variants={animations.item} className="mb-16 px-4 text-center">
+          <h2 className="mb-4 text-4xl font-bold md:text-5xl">{t('skills.title')}</h2>
+          <p className="mx-auto max-w-2xl text-xl text-muted-foreground">{t('skills.subtitle')}</p>
         </motion.div>
-      </div>
+
+        <div className="mx-auto max-w-5xl space-y-1">
+          {ROWS.map((row, i) => (
+            <motion.div key={i} variants={animations.item}>
+              <MarqueeRow items={row.items} reverse={row.reverse} duration={row.duration} />
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
     </section>
   )
 }

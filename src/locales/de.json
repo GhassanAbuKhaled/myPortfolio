@@ -34,8 +34,8 @@
     }
   },
   "skills": {
-    "title": "Fähigkeiten & Technologien",
-    "subtitle": "Technologien, mit denen ich Ideen zum Leben erwecke",
+    "title": "Werkzeuge meines Handwerks",
+    "subtitle": "Die Sprachen, Frameworks und Tools, zu denen ich greife, um Ideen in fertige Produkte zu verwandeln.",
     "frontend": "Frontend",
     "backend": "Backend",
     "tools": "Tools & Andere",
