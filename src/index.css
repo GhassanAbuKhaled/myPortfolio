@@ -141,3 +141,37 @@
     scrollbar-color: hsl(var(--primary) / 0.7) transparent;
   }
 }
+
+/* ── AI-Augmented Workflow section ───────────────────────────── */
+@layer utilities {
+  .font-mono-code {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-feature-settings: 'liga' 1, 'calt' 1;
+  }
+
+  /* Faint blueprint grid used as section atmosphere */
+  .bg-grid-faint {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.6) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.6) 1px, transparent 1px);
+    background-size: 46px 46px;
+    -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 40%, #000 30%, transparent 75%);
+            mask-image: radial-gradient(ellipse 75% 60% at 50% 40%, #000 30%, transparent 75%);
+  }
+}
+
+@keyframes caret-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.animate-caret { animation: caret-blink 1s step-end infinite; }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.8); }
+}
+.animate-pulse-dot { animation: pulse-dot 1.6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-caret, .animate-pulse-dot { animation: none; }
+}

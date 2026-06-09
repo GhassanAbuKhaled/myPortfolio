@@ -4,6 +4,7 @@
     "about": "About",
     "projects": "Projects",
     "skills": "Skills",
+    "ai": "AI",
     "certifications": "Certifications",
     "contact": "Contact"
   },
@@ -39,6 +40,30 @@
     "backend": "Backend",
     "tools": "Tools & Others",
     "techStack": "Tech Stack"
+  },
+  "ai": {
+    "eyebrow": "AI-Augmented Workflow",
+    "title": "I Build With AI, Not Around It",
+    "subtitle": "I treat AI as a senior pair-programmer — directing it with precise prompts, reviewing every line it writes, and shipping faster because of it.",
+    "toolsLabel": "The tools I reach for, every day",
+    "capabilities": {
+      "prompt": {
+        "title": "Prompt Engineering",
+        "desc": "Context-rich, specific prompts that produce production-ready code — not boilerplate I have to rewrite."
+      },
+      "pair": {
+        "title": "AI Pair Programming",
+        "desc": "Real-time collaboration inside the editor, keeping me in flow instead of switching to a chat tab."
+      },
+      "agentic": {
+        "title": "Agentic Workflows",
+        "desc": "Delegating multi-file refactors, tests, and migrations to agents like Claude Code — then verifying the result."
+      },
+      "review": {
+        "title": "AI-Assisted Review",
+        "desc": "Using AI as a relentless second reviewer to catch bugs and edge cases before they reach a pull request."
+      }
+    }
   },
   "projects": {
     "title": "Featured Projects",
