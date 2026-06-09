@@ -70,7 +70,12 @@
     "subtitle": "A showcase of my recent work and personal projects",
     "myTitle": "My Projects",
     "featuredWork": "Featured Work",
-    "viewProject": "View Project"
+    "viewProject": "View Project",
+    "featured": "Featured",
+    "appStore": "App Store",
+    "liveSite": "Live Site",
+    "practiceTitle": "Practice & Learning",
+    "practiceSubtitle": "Early projects I built while learning the fundamentals."
   },
   "project": {
     "taskManager": {

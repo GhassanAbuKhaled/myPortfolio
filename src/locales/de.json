@@ -70,7 +70,12 @@
     "subtitle": "Eine Auswahl meiner neuesten Arbeiten und persönlichen Projekte",
     "myTitle": "Meine Projekte",
     "featuredWork": "Ausgewählte Arbeiten",
-    "viewProject": "Projekt ansehen"
+    "viewProject": "Projekt ansehen",
+    "featured": "Highlight",
+    "appStore": "App Store",
+    "liveSite": "Live-Seite",
+    "practiceTitle": "Übung & Lernen",
+    "practiceSubtitle": "Frühe Projekte aus meiner Lernphase mit den Grundlagen."
   },
   "project": {
     "taskManager": {
