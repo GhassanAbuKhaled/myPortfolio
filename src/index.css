@@ -182,8 +182,19 @@
   will-change: transform;
 }
 
+/* Animated gradient sweep for the hero headline */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.animate-gradient-text {
+  background-size: 200% auto;
+  animation: gradient-shift 6s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-caret,
   .animate-pulse-dot,
-  .animate-marquee { animation: none; }
+  .animate-marquee,
+  .animate-gradient-text { animation: none; }
 }
