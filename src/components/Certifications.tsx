@@ -3,6 +3,7 @@ import { useRef, useMemo, memo, FC } from 'react'
 import { Award, ExternalLink, Calendar, Building, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { ImageWithLoading } from '@/components/ui/image-with-loading'
 import { useLanguage } from './LanguageProvider'
 
 interface CertificationCardProps {
@@ -13,12 +14,29 @@ interface CertificationCardProps {
     dateKey: string;
     descriptionKey: string;
     certificateUrl?: string;
+    certificateImage?: string;
   };
   t: (key: string) => string;
 }
 
 const CertificationCard: FC<CertificationCardProps> = memo(({ certification, t }) => (
-  <Card className="border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow">
+  <Card className="border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow overflow-hidden">
+    {certification.certificateImage && (
+      <a
+        href={certification.certificateUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={t('certifications.viewCertificate')}
+        className="block bg-muted"
+      >
+        <ImageWithLoading
+          src={certification.certificateImage}
+          alt={`${t(certification.titleKey)} certificate`}
+          className="w-full h-auto object-contain"
+          loadingSize="md"
+        />
+      </a>
+    )}
     <CardHeader>
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1">
@@ -79,7 +97,8 @@ const Certifications = () => {
       issuerKey: 'certifications.amazonJuniorDev.issuer',
       dateKey: 'certifications.amazonJuniorDev.date',
       descriptionKey: 'certifications.amazonJuniorDev.description',
-      certificateUrl: 'https://coursera.org/share/c1c2ef5d7efe51c911c240b186ed31e9'
+      certificateUrl: 'https://coursera.org/share/c1c2ef5d7efe51c911c240b186ed31e9',
+      certificateImage: `${import.meta.env.BASE_URL}images/certifications/amazon-junior-software-developer.png`
     }
   ], [])
 
