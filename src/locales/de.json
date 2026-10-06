@@ -74,6 +74,10 @@
     "featured": "Highlight",
     "appStore": "App Store",
     "liveSite": "Live-Seite",
+    "publishedTitle": "Veröffentlichte Apps",
+    "publishedSubtitle": "Produkte, die ich konzipiert, entwickelt und im App Store veröffentlicht habe.",
+    "moreTitle": "Weitere Projekte",
+    "moreSubtitle": "Full-Stack-, Forschungs- und Praktikumsprojekte.",
     "practiceTitle": "Übung & Lernen",
     "practiceSubtitle": "Frühe Projekte aus meiner Lernphase mit den Grundlagen."
   },
@@ -87,6 +91,11 @@
       "title": "Lalisa - KI-Kalorien- & Ernährungstracker",
       "description": "KI-gestützte Ernährungs-App. Mahlzeit fotografieren und sofort Nährwerte erhalten.",
       "longDescription": "Eine Ernährungs-App, die die Kamera in einen Kalorienzähler verwandelt: einfach eine Mahlzeit fotografieren und Googles Gemini-KI schätzt sofort Kalorien und Makronährstoffe. Plattformübergreifend mit React Native und Expo auf einem Supabase-Backend entwickelt, mit KI-Scannen als Premium-Funktion (RevenueCat) und Produktanalyse über PostHog. Im App Store veröffentlicht."
+    },
+    "rasool": {
+      "title": "Rasool - Tägliches Dhikr, Dua & Ayah",
+      "description": "Islamische Erinnerungs-App für Adhkar, Duas, Koranverse und Ahadith.",
+      "longDescription": "Eine mobile App für eine tägliche Gewohnheit des Gedenkens: fünf kuratierte Karten pro Tag mit Adhkar, Duas, Koranversen und authentischen Ahadith, smarte Morgen- und Abendbenachrichtigungen, Homescreen-Widgets, ein Tasbih-Zähler und Streak-Tracking. Mit React Native und Expo auf einem Supabase-Backend entwickelt, vollständig zweisprachig (Arabisch mit RTL und Englisch), mit Premium-Abo über RevenueCat und Analysen über PostHog. Im App Store veröffentlicht."
     },
     "thesis": {
       "title": "Distanzfärbung von dünn besetzten Graphen",

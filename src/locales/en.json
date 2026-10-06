@@ -74,6 +74,10 @@
     "featured": "Featured",
     "appStore": "App Store",
     "liveSite": "Live Site",
+    "publishedTitle": "Published Apps",
+    "publishedSubtitle": "Products I designed, built and shipped to the App Store.",
+    "moreTitle": "More Projects",
+    "moreSubtitle": "Full-stack, research and internship work.",
     "practiceTitle": "Practice & Learning",
     "practiceSubtitle": "Early projects I built while learning the fundamentals."
   },
@@ -87,6 +91,11 @@
       "title": "Lalisa - AI Calorie & Nutrition Tracker",
       "description": "AI-powered food tracking app. Snap a meal and get instant nutrition.",
       "longDescription": "A food-tracking mobile app that turns your camera into a calorie counter: snap any meal and Google's Gemini AI instantly estimates calories and macros. Built cross-platform with React Native and Expo on a Supabase backend, with AI scanning as a premium tier (RevenueCat) and product analytics via PostHog. Published on the App Store."
+    },
+    "rasool": {
+      "title": "Rasool - Daily Dhikr, Dua & Ayah",
+      "description": "Islamic daily reminder app for adhkar, duas, ayat and ahadith.",
+      "longDescription": "A mobile app that builds a daily habit of remembrance: five curated cards a day of adhkar, duas, Quran verses and authentic ahadith, smart morning and evening notifications, home-screen widgets, a tasbeeh counter and streak tracking. Built with React Native and Expo on a Supabase backend, fully bilingual (Arabic RTL and English), with a premium tier via RevenueCat and analytics through PostHog. Published on the App Store."
     },
     "thesis": {
       "title": "Distance Coloring of Sparse Graphs",

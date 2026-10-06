@@ -22,6 +22,7 @@ interface Project {
   image: string
   imageType?: string
   images?: string[]
+  icon?: string
   technologies: string[]
   githubUrl: string
   appStoreUrl?: string
@@ -45,10 +46,14 @@ const AppleIcon = ({ className }: { className?: string }) => (
 const ProjectGallery: FC<{ images: string[]; alt: string }> = ({ images, alt }) => {
   const [api, setApi] = useState<CarouselApi>()
   const [selected, setSelected] = useState(0)
+  const [snapCount, setSnapCount] = useState(0)
 
   useEffect(() => {
     if (!api) return
-    const onSelect = () => setSelected(api.selectedScrollSnap())
+    const onSelect = () => {
+      setSelected(api.selectedScrollSnap())
+      setSnapCount(api.scrollSnapList().length)
+    }
     onSelect()
     api.on('select', onSelect)
     api.on('reInit', onSelect)
@@ -59,20 +64,19 @@ const ProjectGallery: FC<{ images: string[]; alt: string }> = ({ images, alt }) 
   }, [api])
 
   return (
-    <div className="relative w-full">
-      <Carousel setApi={setApi} opts={{ loop: true }} className="w-full">
-        <CarouselContent className="ml-0">
+    // Backdrop stays light in both themes — it matches the screenshots' own background
+    <div className="relative flex h-full w-full flex-col justify-center bg-gradient-to-b from-[#eef2ee] to-[#dde7de] px-3 pb-8 pt-3">
+      {/* Portrait screenshots: several per view so each one fills its slot instead of floating in a 16:9 box */}
+      <Carousel setApi={setApi} opts={{ align: 'start', containScroll: 'trimSnaps' }} className="w-full">
+        <CarouselContent className="-ml-2">
           {images.map((src, i) => (
-            <CarouselItem key={src} className="pl-0">
-              {/* Backdrop stays light in both themes — it matches the screenshots' own background */}
-              <div className="flex aspect-video w-full items-center justify-center overflow-hidden bg-gradient-to-b from-[#eef2ee] to-[#dde7de]">
-                <img
-                  src={src}
-                  alt={`${alt} — screenshot ${i + 1} of ${images.length}`}
-                  loading="lazy"
-                  className="h-full w-auto object-contain"
-                />
-              </div>
+            <CarouselItem key={src} className="basis-1/2 pl-2 sm:basis-1/3">
+              <img
+                src={src}
+                alt={`${alt} — screenshot ${i + 1} of ${images.length}`}
+                loading="lazy"
+                className="aspect-[591/1280] w-full rounded-xl object-cover shadow-md"
+              />
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -80,7 +84,7 @@ const ProjectGallery: FC<{ images: string[]; alt: string }> = ({ images, alt }) 
         <CarouselNext className="right-2 border-0 bg-background/70 text-foreground shadow-sm backdrop-blur-sm hover:bg-background hover:text-foreground" />
       </Carousel>
       <div className="absolute bottom-2.5 left-1/2 z-10 flex -translate-x-1/2 items-center gap-1.5">
-        {images.map((_, i) => (
+        {Array.from({ length: snapCount }, (_, i) => (
           <button
             key={i}
             type="button"
@@ -96,6 +100,15 @@ const ProjectGallery: FC<{ images: string[]; alt: string }> = ({ images, alt }) 
     </div>
   )
 }
+
+const AppIcon: FC<{ src: string; className?: string }> = ({ src, className }) => (
+  <img
+    src={src}
+    alt=""
+    aria-hidden="true"
+    className={cn('shrink-0 rounded-[22%] shadow-md ring-1 ring-border', className)}
+  />
+)
 
 const Meta: FC<{ icon: FC<{ className?: string }>; text: string }> = ({ icon: Icon, text }) => (
   <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
@@ -122,7 +135,11 @@ const TechChips: FC<{ items: string[] }> = ({ items }) => (
   </div>
 )
 
-const IconLink: FC<{ href: string; label: string; children: React.ReactNode }> = ({ href, label, children }) => (
+const IconLink: FC<{
+  href: string
+  label: string
+  children: React.ReactNode
+}> = ({ href, label, children }) => (
   <a
     href={href}
     target="_blank"
@@ -153,16 +170,30 @@ const ProjectLinks: FC<{ project: Project }> = ({ project }) => (
   </div>
 )
 
+const SectionHeading: FC<{ title: string; subtitle: string }> = ({ title, subtitle }) => (
+  <div className="mb-8 text-center">
+    <h3 className="mb-2 text-2xl font-bold">{title}</h3>
+    <p className="text-muted-foreground">{subtitle}</p>
+  </div>
+)
+
 const CARD = 'rounded-2xl border border-border bg-card/70 backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:shadow-glow'
 
 /* ── Flagship feature card ─────────────────────────────────── */
-const FeatureCard: FC<{ project: Project; t: TFn }> = memo(({ project, t }) => (
+const FeatureCard: FC<{
+  project: Project
+  t: TFn
+  reverse?: boolean
+  badge?: boolean
+}> = memo(({ project, t, reverse = false, badge = false }) => (
   <div className={`group grid overflow-hidden lg:grid-cols-2 ${CARD}`}>
-    <div className="relative flex items-center bg-muted/30">
-      <span className="absolute left-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground shadow-glow">
-        <Star className="h-3 w-3 fill-current" />
-        {t('projects.featured')}
-      </span>
+    <div className={cn('relative flex items-stretch bg-muted/30', reverse && 'lg:order-last')}>
+      {badge && (
+        <span className="absolute left-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground shadow-glow">
+          <Star className="h-3 w-3 fill-current" />
+          {t('projects.featured')}
+        </span>
+      )}
       {project.images && project.images.length > 1 ? (
         <ProjectGallery images={project.images} alt={t(project.titleKey)} />
       ) : (
@@ -173,7 +204,10 @@ const FeatureCard: FC<{ project: Project; t: TFn }> = memo(({ project, t }) => (
     </div>
 
     <div className="flex flex-col justify-center gap-4 p-7 md:p-9">
-      <h3 className="text-2xl font-bold md:text-3xl">{t(project.titleKey)}</h3>
+      <div className="flex items-center gap-4">
+        {project.icon && <AppIcon src={project.icon} className="h-14 w-14 md:h-16 md:w-16" />}
+        <h3 className="text-2xl font-bold md:text-3xl">{t(project.titleKey)}</h3>
+      </div>
       <MetaRow project={project} />
       <p className="leading-relaxed text-muted-foreground">{t(project.longDescriptionKey)}</p>
       <TechChips items={project.technologies} />
@@ -230,7 +264,10 @@ const ProjectCard: FC<{ project: Project; t: TFn }> = memo(({ project, t }) => (
 
     <div className="flex flex-1 flex-col p-6">
       <div className="mb-3 flex items-start justify-between gap-3">
-        <h3 className="text-xl font-semibold">{t(project.titleKey)}</h3>
+        <div className="flex items-center gap-3">
+          {project.icon && <AppIcon src={project.icon} className="h-11 w-11" />}
+          <h3 className="text-xl font-semibold">{t(project.titleKey)}</h3>
+        </div>
         <ProjectLinks project={project} />
       </div>
       <div className="mb-4">
@@ -239,12 +276,31 @@ const ProjectCard: FC<{ project: Project; t: TFn }> = memo(({ project, t }) => (
       <p className="mb-5 text-sm leading-relaxed text-muted-foreground">{t(project.longDescriptionKey)}</p>
       <div className="mt-auto space-y-4">
         <TechChips items={project.technologies} />
-        <Button variant="outline" className="group/btn w-full" asChild>
-          <a href={project.appStoreUrl || project.liveUrl} target="_blank" rel="noopener noreferrer">
-            {t('projects.viewProject')}
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-          </a>
-        </Button>
+        {project.appStoreUrl ? (
+          <div className="flex gap-3">
+            <Button variant="glow" className="flex-1" asChild>
+              <a href={project.appStoreUrl} target="_blank" rel="noopener noreferrer">
+                <AppleIcon className="mr-2 h-4 w-4" />
+                {t('projects.appStore')}
+              </a>
+            </Button>
+            {project.liveUrl && (
+              <Button variant="outline" className="flex-1" asChild>
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="mr-2 h-4 w-4" />
+                  {t('projects.liveSite')}
+                </a>
+              </Button>
+            )}
+          </div>
+        ) : (
+          <Button variant="outline" className="group/btn w-full" asChild>
+            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+              {t('projects.viewProject')}
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+            </a>
+          </Button>
+        )}
       </div>
     </div>
   </div>
@@ -288,14 +344,16 @@ const Projects = () => {
         titleKey: 'project.lalisa.title',
         descriptionKey: 'project.lalisa.description',
         longDescriptionKey: 'project.lalisa.longDescription',
-        image: `${import.meta.env.BASE_URL}images/projects/lalisa/01-scan.png`,
+        image: `${import.meta.env.BASE_URL}images/projects/lalisa/01-home.png`,
         imageType: 'file',
         images: [
-          `${import.meta.env.BASE_URL}images/projects/lalisa/01-scan.png`,
-          `${import.meta.env.BASE_URL}images/projects/lalisa/02-dashboard.png`,
+          `${import.meta.env.BASE_URL}images/projects/lalisa/01-home.png`,
+          `${import.meta.env.BASE_URL}images/projects/lalisa/02-photo-scan.png`,
           `${import.meta.env.BASE_URL}images/projects/lalisa/03-ai-chat.png`,
-          `${import.meta.env.BASE_URL}images/projects/lalisa/04-insights.png`,
+          `${import.meta.env.BASE_URL}images/projects/lalisa/04-edit-meal.png`,
+          `${import.meta.env.BASE_URL}images/projects/lalisa/05-insights.png`,
         ],
+        icon: `${import.meta.env.BASE_URL}images/projects/lalisa/icon.png`,
         technologies: ['React Native', 'Expo', 'TypeScript', 'Supabase', 'Gemini AI', 'RevenueCat'],
         githubUrl: '',
         appStoreUrl: 'https://apps.apple.com/us/app/lalisa/id6763659459',
@@ -306,18 +364,27 @@ const Projects = () => {
         featured: true,
       },
       {
-        id: 1,
-        titleKey: 'project.taskManager.title',
-        descriptionKey: 'project.taskManager.description',
-        longDescriptionKey: 'project.taskManager.longDescription',
-        image: `${import.meta.env.BASE_URL}images/projects/taskapp-welcome.png`,
+        id: 10,
+        titleKey: 'project.rasool.title',
+        descriptionKey: 'project.rasool.description',
+        longDescriptionKey: 'project.rasool.longDescription',
+        image: `${import.meta.env.BASE_URL}images/projects/rasool/01-home.png`,
         imageType: 'file',
-        technologies: ['React', 'TypeScript', 'Java', 'Spring Boot', 'MySQL', 'AWS EC2', 'AWS S3', 'Tailwind'],
-        githubUrl: 'https://github.com/GhassanAbuKhaled/TaskFlow',
-        liveUrl: 'https://ghassanabukhaled.github.io/TaskFlow/',
-        date: '07/2025 - Present',
+        images: [
+          `${import.meta.env.BASE_URL}images/projects/rasool/01-home.png`,
+          `${import.meta.env.BASE_URL}images/projects/rasool/02-widget.png`,
+          `${import.meta.env.BASE_URL}images/projects/rasool/03-daily-cards.png`,
+          `${import.meta.env.BASE_URL}images/projects/rasool/04-tasbeeh.png`,
+          `${import.meta.env.BASE_URL}images/projects/rasool/05-streak.png`,
+        ],
+        icon: `${import.meta.env.BASE_URL}images/projects/rasool/icon.png`,
+        technologies: ['React Native', 'Expo', 'TypeScript', 'Supabase', 'RevenueCat', 'iOS Widgets'],
+        githubUrl: '',
+        appStoreUrl: 'https://apps.apple.com/us/app/rasool-dhikr-dua-ayah/id6770285978',
+        liveUrl: 'https://rasool.app',
+        date: '05/2026 - Present',
         place: 'Personal Project',
-        role: 'Full Stack Developer',
+        role: 'Founder & Full Stack Developer',
         featured: true,
       },
       {
@@ -331,6 +398,21 @@ const Projects = () => {
         githubUrl: 'https://github.com/GhassanAbuKhaled/lalissa-frontend',
         liveUrl: 'https://lalissa.onrender.com',
         date: '03/2024',
+        place: 'Personal Project',
+        role: 'Full Stack Developer',
+        featured: true,
+      },
+      {
+        id: 1,
+        titleKey: 'project.taskManager.title',
+        descriptionKey: 'project.taskManager.description',
+        longDescriptionKey: 'project.taskManager.longDescription',
+        image: `${import.meta.env.BASE_URL}images/projects/taskapp-welcome.png`,
+        imageType: 'file',
+        technologies: ['React', 'TypeScript', 'Java', 'Spring Boot', 'MySQL', 'AWS EC2', 'AWS S3', 'Tailwind'],
+        githubUrl: 'https://github.com/GhassanAbuKhaled/TaskFlow',
+        liveUrl: 'https://ghassanabukhaled.github.io/TaskFlow/',
+        date: '07/2025 - Present',
         place: 'Personal Project',
         role: 'Full Stack Developer',
         featured: true,
@@ -433,11 +515,12 @@ const Projects = () => {
     [],
   )
 
-  const { spotlight, mainProjects, practiceProjects } = useMemo(() => {
+  const { spotlights, mainProjects, practiceProjects } = useMemo(() => {
     const showcase = projects.filter((p) => !p.isEducational)
+    // Shipped App Store apps get the full-width feature treatment
     return {
-      spotlight: showcase[0],
-      mainProjects: showcase.slice(1),
+      spotlights: showcase.filter((p) => p.appStoreUrl),
+      mainProjects: showcase.filter((p) => !p.appStoreUrl),
       practiceProjects: projects.filter((p) => p.isEducational),
     }
   }, [projects])
@@ -446,7 +529,10 @@ const Projects = () => {
     () => ({
       container: {
         hidden: { opacity: 0 },
-        visible: { opacity: 1, transition: { delayChildren: 0.15, staggerChildren: 0.12 } },
+        visible: {
+          opacity: 1,
+          transition: { delayChildren: 0.15, staggerChildren: 0.12 },
+        },
       },
       item: { hidden: { y: 40, opacity: 0 }, visible: { y: 0, opacity: 1 } },
     }),
@@ -469,14 +555,24 @@ const Projects = () => {
             <p className="mx-auto max-w-2xl text-xl text-muted-foreground">{t('projects.subtitle')}</p>
           </motion.div>
 
-          {/* Spotlight */}
-          {spotlight && (
-            <motion.div variants={variants.item} className="mb-8">
-              <FeatureCard project={spotlight} t={t} />
+          {/* Spotlights — alternate image side for a zigzag rhythm */}
+          {spotlights.length > 0 && (
+            <motion.div variants={variants.item}>
+              <SectionHeading title={t('projects.publishedTitle')} subtitle={t('projects.publishedSubtitle')} />
             </motion.div>
           )}
+          {spotlights.map((project, i) => (
+            <motion.div key={project.id} variants={variants.item} className="mb-8">
+              <FeatureCard project={project} t={t} reverse={i % 2 === 1} badge={i === 0} />
+            </motion.div>
+          ))}
 
           {/* Main grid */}
+          {mainProjects.length > 0 && (
+            <motion.div variants={variants.item} className="mt-16">
+              <SectionHeading title={t('projects.moreTitle')} subtitle={t('projects.moreSubtitle')} />
+            </motion.div>
+          )}
           <div className="mb-16 grid gap-6 lg:grid-cols-2">
             {mainProjects.map((project) => (
               <motion.div key={project.id} variants={variants.item}>
@@ -488,10 +584,7 @@ const Projects = () => {
           {/* Practice & learning */}
           {practiceProjects.length > 0 && (
             <motion.div variants={variants.item}>
-              <div className="mb-8 text-center">
-                <h3 className="mb-2 text-2xl font-bold">{t('projects.practiceTitle')}</h3>
-                <p className="text-muted-foreground">{t('projects.practiceSubtitle')}</p>
-              </div>
+              <SectionHeading title={t('projects.practiceTitle')} subtitle={t('projects.practiceSubtitle')} />
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {practiceProjects.map((project) => (
                   <CompactCard key={project.id} project={project} t={t} />
