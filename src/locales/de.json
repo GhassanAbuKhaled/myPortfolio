@@ -12,8 +12,7 @@
     "greeting": "Hallo, ich bin",
     "title": "Full Stack Entwickler",
     "description": "Ich gestalte außergewöhnliche digitale Erlebnisse durch sauberen Code, durchdachtes Design und modernste Technologien. Lassen Sie uns gemeinsam etwas Erstaunliches aufbauen.",
-    "viewWork": "Meine Arbeit ansehen",
-    "downloadResume": "Lebenslauf herunterladen"
+    "viewWork": "Meine Arbeit ansehen"
   },
   "about": {
     "title": "Über mich",

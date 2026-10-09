@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect, useMemo, memo, FC, useCallback } from 'react'
-import { ArrowDown, Download, Github, Linkedin, Mail } from 'lucide-react'
+import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from './LanguageProvider'
 
@@ -129,13 +129,6 @@ const Hero = () => {
               <motion.a href="#projects" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 {t('hero.viewWork')}
                 <ArrowDown className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5" />
-              </motion.a>
-            </Button>
-
-            <Button asChild variant="outline" size="lg" className="group">
-              <motion.a href="/resume.pdf" download whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                {t('hero.downloadResume')}
-                <Download className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5" />
               </motion.a>
             </Button>
           </motion.div>

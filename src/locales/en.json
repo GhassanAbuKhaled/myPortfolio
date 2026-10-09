@@ -12,8 +12,7 @@
     "greeting": "Hi, I'm",
     "title": "Full Stack Developer",
     "description": "I craft exceptional digital experiences through clean code, thoughtful design, and cutting-edge technologies. Let's build something amazing together.",
-    "viewWork": "View My Work",
-    "downloadResume": "Download Resume"
+    "viewWork": "View My Work"
   },
   "about": {
     "title": "About Me",
