@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState, useMemo, memo, FC, useCallback } from 'react'
-import { Mail, MapPin, Phone, Send } from 'lucide-react'
+import { Mail, Send } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -13,14 +13,11 @@ interface ContactInfoItemProps {
   label: string
   value: string
   href: string
-  t: (key: string) => string
 }
 
-const ContactInfoItem: FC<ContactInfoItemProps> = memo(({ icon: Icon, label, value, href, t }) => (
+const ContactInfoItem: FC<ContactInfoItemProps> = memo(({ icon: Icon, label, value, href }) => (
   <motion.a
     href={href}
-    target={label === t('contact.location') ? "_blank" : undefined}
-    rel={label === t('contact.location') ? "noopener noreferrer" : undefined}
     whileHover={{ x: 5 }}
     className="flex items-center space-x-4 p-4 rounded-lg bg-card border border-border hover:border-primary/50 transition-all duration-300 group"
   >
@@ -103,18 +100,6 @@ const Contact = () => {
       label: t('contact.email'),
       value: "ghassan.adnanabukhaled@gmail.com",
       href: "mailto:ghassan.adnanabukhaled@gmail.com"
-    },
-    {
-      icon: Phone,
-      label: t('contact.phone'),
-      value: "+49 15208182030",
-      href: "tel:+4915208182030"
-    },
-    {
-      icon: MapPin,
-      label: t('contact.location'),
-      value: t('about.locationValue'),
-      href: "https://www.google.com/maps/search/?api=1&query=Wuppertal+42107+Germany"
     }
   ], [t])
 
@@ -172,7 +157,7 @@ const Contact = () => {
 
               <div className="space-y-4">
                 {contactInfo.map((info) => (
-                  <ContactInfoItem key={info.label} {...info} t={t} />
+                  <ContactInfoItem key={info.label} {...info} />
                 ))}
               </div>
 
